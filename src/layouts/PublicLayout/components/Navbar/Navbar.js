@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useMemo } from "react";
 import React from "react";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
-import { Drawer } from './components';
+import { Drawer } from "./components";
 const Navbar = () => {
   const [hideOnScroll, setHideOnScroll] = useState(true);
   useScrollPosition(

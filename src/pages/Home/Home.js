@@ -1,10 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const Home = () => {
-  return (
-    <React.Fragment>
-    </React.Fragment>
-  );
+  return <React.Fragment></React.Fragment>;
 };
 
 export default Home;
