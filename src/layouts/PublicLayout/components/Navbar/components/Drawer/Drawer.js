@@ -48,6 +48,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import HistoryIcon from "@material-ui/icons/History";
 import Button from "@material-ui/core/Button";
 import { Gauge } from "../../../../../../components/GraphComponents/components";
+import { Text } from "../../../../../../components";
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,7 +105,14 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9) + 1,
     },
   },
-
+  toolbar: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+  },
   content: {
     flexGrow: 1,
     padding: theme.spacing(1),
@@ -436,7 +444,7 @@ export default function MiniDrawer() {
                 ""
               ) : (
                 <img
-                  src="/img/dashboardLogo.svg"
+                  src="http://adsrevenue.co/img/final-logo.png"
                   className="hidden sm:block object-contain object-cover w-16 h-16 py-4 -mx-6"
                 />
               )}
@@ -454,9 +462,9 @@ export default function MiniDrawer() {
             </div>
             <div className="flex flex-col ml-4">
               <Typography className={classes.title} variant="h6" noWrap>
-                <span className="font-semibold text-indigo-800">
-                  BoilerPlate
-                </span>
+                <Text variant="blue" weight="700">
+                  AdsRevenue
+                </Text>
               </Typography>
               <small
                 className={clsx(
@@ -549,12 +557,11 @@ export default function MiniDrawer() {
           }),
         }}
       >
-        <div className="flex justify-center py-10">
-          <div className="flex justify-center items-center">
+        <div className={classes.toolbar}>
+          <div className="pl-4 ">
             <img
-              src="/img/dashboardLogo.svg"
+              src="http://adsrevenue.co/img/final-logo.png"
               className="mx-auto"
-              width="60px"
             />
           </div>
           <IconButton onClick={handleDrawerClose}>
