@@ -87,6 +87,9 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerOpen: {
         width: drawerWidth,
+        "&::-webkit-scrollbar": {
+            display: "none",
+        },
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
@@ -131,7 +134,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
         backgroundColor: '#f5f5f5',
-        fontSize:'12px',
+        fontSize: '12px',
         '&:hover': {
             backgroundColor: '#eeeeee',
         },
@@ -165,7 +168,7 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
-        fontSize:'12px',
+        fontSize: '12px',
         [theme.breakpoints.up('md')]: {
             width: '20ch',
         },
@@ -429,7 +432,7 @@ export default function MiniDrawer() {
                             <Typography className={classes.title} variant="h6" noWrap>
                                 <span className="font-semibold text-indigo-800">BoilerPlate</span>
                             </Typography>
-                            <small className={clsx(classes.title,'text-xs font-medium text-gray-400')}>{getCurrentDate()}</small>
+                            <small className={clsx(classes.title, 'text-xs font-medium text-gray-400')}>{getCurrentDate()}</small>
                         </div>
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
@@ -490,7 +493,7 @@ export default function MiniDrawer() {
             </div>
             <Drawer
                 variant="permanent"
-                className={clsx(classes.drawer,{
+                className={clsx(classes.drawer, {
                     [classes.drawerOpen]: open,
                     [classes.drawerClose]: !open,
                 })}
