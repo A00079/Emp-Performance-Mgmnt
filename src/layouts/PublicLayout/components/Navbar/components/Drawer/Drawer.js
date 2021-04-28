@@ -104,14 +104,7 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9) + 1,
     },
   },
-  toolbar: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-  },
+
   content: {
     flexGrow: 1,
     padding: theme.spacing(1),
@@ -556,18 +549,13 @@ export default function MiniDrawer() {
           }),
         }}
       >
-        <div className={classes.toolbar}>
-          <div className="flex flex-row justify-between items-center">
+        <div className="flex justify-center py-10">
+          <div className="flex justify-center items-center">
             <img
               src="/img/dashboardLogo.svg"
-              className="object-contain object-cover w-16 h-16 py-2"
+              className="mx-auto"
+              width="60px"
             />
-            <h4
-              className="text-gray-600 text-indigo-800 font-bold text-lg ml-2"
-              paragraph
-            >
-              Dashboard
-            </h4>
           </div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -578,33 +566,7 @@ export default function MiniDrawer() {
           </IconButton>
         </div>
         <Divider />
-        <List className="bg-blue-50">
-          <ListItem className="bg-green-50">
-            {open ? (
-              <div className="lg:w-full md:full w-full">
-                <div className="h-full flex flex-row justify-between items-center rounded-lg">
-                  <Avatar />
-                  <div className="flex-grow">
-                    <h2 className="text-gray-900 title-font font-medium">
-                      Holden Caulfield
-                    </h2>
-                    <p className="text-gray-500">UI Designer</p>
-                  </div>
-                  <ThreeDotMenu />
-                </div>
-              </div>
-            ) : (
-              <div className="-mx-4 sm:-mx-2 p-0">
-                <Avatar />
-              </div>
-            )}
-          </ListItem>
-        </List>
-        {open ? (
-          <h4 className="text-gray-600 font-bold ml-3">Navigation</h4>
-        ) : (
-          ""
-        )}
+
         <List>
           <div
             onClick={() => activePanel("managestore")}
