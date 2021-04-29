@@ -8,7 +8,7 @@ function PublicLayout(props) {
       <div>
         <Navbar />
       </div>
-      <div className="p-0">{children}</div>
+      <div className="pl-60 py-16">{children}</div>
       <div>{withFooter && <Footer />}</div>
     </div>
   );
