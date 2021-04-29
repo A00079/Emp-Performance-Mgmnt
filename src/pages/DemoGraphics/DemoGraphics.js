@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActiveShapePieChart, MultiRadialPieChart, TimeSeriesChart } from "../../components/GraphComponents/components";
+import { ActiveShapePieChart, MultiRadialPieChart } from "../../components/GraphComponents/components";
 
 const DemoGraphics = (props) => {
     return (
@@ -7,7 +7,6 @@ const DemoGraphics = (props) => {
             <section className='p-20'>
                 <ActiveShapePieChart />
                 <MultiRadialPieChart />
-                <TimeSeriesChart />
             </section>
         </React.Fragment>
     )
