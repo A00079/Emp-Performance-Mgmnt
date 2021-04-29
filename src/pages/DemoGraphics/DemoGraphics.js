@@ -1,13 +1,11 @@
 import React from 'react';
 import { ActiveShapePieChart, MultiRadialPieChart } from "../../components/GraphComponents/components";
+import { GraphContainerCard } from "./components";
 
 const DemoGraphics = (props) => {
     return (
-        <React.Fragment>
-            <section className='p-20'>
-                <ActiveShapePieChart />
-                <MultiRadialPieChart />
-            </section>
+        <React.Fragment className="bg-white">
+            <GraphContainerCard />
         </React.Fragment>
     )
 }

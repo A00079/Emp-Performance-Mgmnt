@@ -3,39 +3,69 @@ import ReactApexChart from 'react-apexcharts';
 
 const MultiRadialPieChart = () => {
 
-    const [series, setSeries] = useState([43, 11, 67, 504, 70, 67]);
+    const [series, setSeries] = useState([76, 67, 61, 90,57,29]);
     const [options, setOptions] = useState(
         {
             chart: {
-                height: 350,
+                height: 260,
                 type: 'radialBar',
             },
             plotOptions: {
                 radialBar: {
+                    offsetY: 0,
+                    startAngle: 0,
+                    endAngle: 270,
+                    hollow: {
+                        margin: 5,
+                        size: '30%',
+                        background: 'transparent',
+                        image: undefined,
+                    },
                     dataLabels: {
                         name: {
-                            fontSize: '14px',
+                            show: false,
                         },
                         value: {
-                            fontSize: '16px',
-                        },
-                        // total: {
-                        //     show: true,
-                        //     label: 'Total',
-                        //     formatter: function (w) {
-                        //         // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-                        //         return 249
-                        //     }
-                        // }
+                            show: false,
+                        }
                     }
                 }
             },
+            colors: ['#1ab7ea', '#0084ff', '#39539E', '#0077B5'],
             labels: ['Total Offers', 'Active Offers', 'Pending Applications', 'Total Affiliates', 'Active Affiliates', 'Pending Affiliates'],
+            legend: {
+                show: true,
+                floating: true,
+                fontSize: '14px',
+                position: 'left',
+                offsetX: 160,
+                offsetY: 0,
+                labels: {
+                    useSeriesColors: true,
+                },
+                markers: {
+                    size: 0
+                },
+                formatter: function (seriesName, opts) {
+                    return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+                },
+                itemMargin: {
+                    vertical: 3
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        show: false
+                    }
+                }
+            }]
         },
     );
     return (
         <div id="chart">
-            <ReactApexChart options={options} series={series} type="radialBar" height={350} />
+            <ReactApexChart options={options} series={series} type="radialBar" height={200} />
         </div>
     )
 }

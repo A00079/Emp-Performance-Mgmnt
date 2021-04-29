@@ -69,7 +69,7 @@ const renderActiveShape = (props) => {
         textAnchor={textAnchor}
         fill="#1D4ED8"
       >{`PV ${value}`}</text>
-      <text
+      {/* <text
         className="font-semibold"
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
@@ -78,7 +78,7 @@ const renderActiveShape = (props) => {
         fill="#999"
       >
         {`(Rate ${(percent * 100).toFixed(2)}%)`}
-      </text>
+      </text> */}
     </g>
   );
 };
@@ -93,15 +93,16 @@ export default function ActiveShapePieChart() {
   );
 
   return (
-    <PieChart width={450} height={400}>
+    <PieChart width={350} height={165}>
       <Pie
+        className="text-xs"
         activeIndex={activeIndex}
         activeShape={renderActiveShape}
         data={data}
-        cx={200}
-        cy={200}
-        innerRadius={60}
-        outerRadius={80}
+        cx={155}
+        cy={80}
+        innerRadius={40}
+        outerRadius={50}
         fill="#8884d8"
         dataKey="value"
         onMouseEnter={onPieEnter}
