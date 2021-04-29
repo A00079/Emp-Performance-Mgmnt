@@ -48,6 +48,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import HistoryIcon from "@material-ui/icons/History";
 import Button from "@material-ui/core/Button";
 import { Gauge } from "../../../../../../components/GraphComponents/components";
+import { Text } from "../../../../../../components";
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,7 +105,14 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9) + 1,
     },
   },
-
+  toolbar: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+  },
   content: {
     flexGrow: 1,
     padding: theme.spacing(1),
@@ -436,7 +444,7 @@ export default function MiniDrawer() {
                 ""
               ) : (
                 <img
-                  src="/img/dashboardLogo.svg"
+                  src="http://adsrevenue.co/img/final-logo.png"
                   className="hidden sm:block object-contain object-cover w-16 h-16 py-4 -mx-6"
                 />
               )}
@@ -454,9 +462,9 @@ export default function MiniDrawer() {
             </div>
             <div className="flex flex-col ml-4">
               <Typography className={classes.title} variant="h6" noWrap>
-                <span className="font-semibold text-indigo-800">
-                  BoilerPlate
-                </span>
+                <Text variant="blue" weight="700">
+                  AdsRevenue
+                </Text>
               </Typography>
               <small
                 className={clsx(
@@ -549,12 +557,11 @@ export default function MiniDrawer() {
           }),
         }}
       >
-        <div className="flex justify-center py-10">
-          <div className="flex justify-center items-center">
+        <div className={classes.toolbar}>
+          <div className="pl-4 ">
             <img
-              src="/img/dashboardLogo.svg"
+              src="http://adsrevenue.co/img/final-logo.png"
               className="mx-auto"
-              width="60px"
             />
           </div>
           <IconButton onClick={handleDrawerClose}>
@@ -572,8 +579,8 @@ export default function MiniDrawer() {
             onClick={() => activePanel("managestore")}
             className={
               activePanelNumber == "1"
-                ? "border-blue-700 border-l-4 rounded-r-full bg-indigo-100"
-                : "hover:border-blue-700 border-l-4 rounded-r-full hover:bg-indigo-100"
+                ? "border-blue-700 border-l-4 bg-blue-50"
+                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
             }
           >
             <ListItem button onClick={handleStore}>
@@ -585,9 +592,14 @@ export default function MiniDrawer() {
                 </div>
               </ListItemIcon>
               <ListItemText>
-                <span className="text-sm text-purple-800 font-bold">
-                  Manage Store
-                </span>
+                <Text
+                  classes="capitalize"
+                  size="sm"
+                  weight="600"
+                  variant="blue"
+                >
+                  Dashboard
+                </Text>
               </ListItemText>
               {openStore ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
@@ -628,8 +640,8 @@ export default function MiniDrawer() {
             onClick={() => activePanel("salesteam")}
             className={
               activePanelNumber == "2"
-                ? "border-blue-700 border-l-4 rounded-r-full bg-indigo-100"
-                : "hover:border-blue-700 border-l-4 rounded-r-full hover:bg-indigo-100"
+                ? "border-blue-700 border-l-4 bg-blue-50"
+                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
             }
           >
             <ListItem button onClick={handleSalesPerson}>
@@ -641,9 +653,14 @@ export default function MiniDrawer() {
                 </div>
               </ListItemIcon>
               <ListItemText>
-                <span className="text-sm text-purple-800 font-bold">
-                  Sales/Team
-                </span>
+                <Text
+                  classes="capitalize"
+                  size="sm"
+                  weight="600"
+                  variant="blue"
+                >
+                  Offer
+                </Text>
               </ListItemText>
               {openSalesPerson ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
@@ -684,8 +701,8 @@ export default function MiniDrawer() {
             onClick={() => activePanel("manageroutes")}
             className={
               activePanelNumber == "3"
-                ? "border-blue-700 border-l-4 rounded-r-full bg-indigo-100"
-                : "hover:border-blue-700 border-l-4 rounded-r-full hover:bg-indigo-100"
+                ? "border-blue-700 border-l-4 bg-blue-50"
+                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
             }
           >
             <ListItem button onClick={handleSalesTeamRoutes}>
@@ -697,9 +714,14 @@ export default function MiniDrawer() {
                 </div>
               </ListItemIcon>
               <ListItemText>
-                <span className="text-sm text-purple-800 font-bold">
-                  Manage Routes
-                </span>
+                <Text
+                  classes="capitalize"
+                  size="sm"
+                  weight="600"
+                  variant="blue"
+                >
+                  Reports
+                </Text>
               </ListItemText>
               {openSalesTeamRoutes ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
@@ -754,8 +776,8 @@ export default function MiniDrawer() {
             onClick={() => activePanel("assignroutes")}
             className={
               activePanelNumber == "4"
-                ? "border-blue-700 border-l-4 rounded-r-full bg-indigo-100"
-                : "hover:border-blue-700 border-l-4 rounded-r-full hover:bg-indigo-100"
+                ? "border-blue-700 border-l-4 bg-blue-50"
+                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
             }
           >
             <ListItem button onClick={handleAssignRoutes}>
@@ -767,9 +789,14 @@ export default function MiniDrawer() {
                 </div>
               </ListItemIcon>
               <ListItemText>
-                <span className="text-sm text-purple-800 font-bold">
-                  Assign Routes
-                </span>
+                <Text
+                  classes="capitalize"
+                  size="sm"
+                  weight="600"
+                  variant="blue"
+                >
+                  Employee
+                </Text>
               </ListItemText>
               {openAssignRoutes ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
@@ -808,8 +835,8 @@ export default function MiniDrawer() {
             onClick={() => activePanel("createschedule")}
             className={
               activePanelNumber == "5"
-                ? "border-blue-700 border-l-4 rounded-r-full bg-indigo-100"
-                : "hover:border-blue-700 border-l-4 rounded-r-full hover:bg-indigo-100"
+                ? "border-blue-700 border-l-4 bg-blue-50"
+                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
             }
           >
             <ListItem button onClick={handleCreateSchedule}>
@@ -821,9 +848,14 @@ export default function MiniDrawer() {
                 </div>
               </ListItemIcon>
               <ListItemText>
-                <span className="text-sm text-purple-800 font-bold">
-                  Create Schedule
-                </span>
+                <Text
+                  classes="capitalize"
+                  size="sm"
+                  weight="600"
+                  variant="blue"
+                >
+                  Affiliates
+                </Text>
               </ListItemText>
               {openCreateSchedule ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
@@ -853,9 +885,14 @@ export default function MiniDrawer() {
                   </div>
                 </ListItemIcon>
                 <ListItemText>
-                  <span className="text-gray-700 font-semibold text-xs">
+                  <Text
+                    classes="capitalize"
+                    size="sm"
+                    weight="600"
+                    variant="blue"
+                  >
                     Team
-                  </span>
+                  </Text>
                 </ListItemText>
               </ListItem>
             </List>
@@ -864,8 +901,8 @@ export default function MiniDrawer() {
             onClick={() => activePanel("viewhistory")}
             className={
               activePanelNumber == "6"
-                ? "border-blue-700 border-l-4 rounded-r-full bg-indigo-100"
-                : "hover:border-blue-700 border-l-4 rounded-r-full hover:bg-indigo-100"
+                ? "border-blue-700 border-l-4 bg-blue-50"
+                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
             }
           >
             <ListItem button>
@@ -877,22 +914,85 @@ export default function MiniDrawer() {
                 </div>
               </ListItemIcon>
               <ListItemText>
-                <span className="text-sm text-purple-800 font-bold">
-                  View History
-                </span>
+                <Text
+                  classes="capitalize"
+                  size="sm"
+                  weight="600"
+                  variant="blue"
+                >
+                  Email
+                </Text>
+              </ListItemText>
+            </ListItem>
+          </div>
+          <div
+            onClick={() => activePanel("viewhistory")}
+            className={
+              activePanelNumber == "6"
+                ? "border-blue-700 border-l-4 bg-blue-50"
+                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
+            }
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
+                  <VisibilityIcon
+                    className={open ? "text-gray-700" : "text-gray-700"}
+                  />
+                </div>
+              </ListItemIcon>
+              <ListItemText>
+                <Text
+                  classes="capitalize"
+                  size="sm"
+                  weight="600"
+                  variant="blue"
+                >
+                  SMS
+                </Text>
+              </ListItemText>
+            </ListItem>
+          </div>
+          <div
+            onClick={() => activePanel("viewhistory")}
+            className={
+              activePanelNumber == "6"
+                ? "border-blue-700 border-l-4 bg-blue-50"
+                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
+            }
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
+                  <VisibilityIcon
+                    className={open ? "text-gray-700" : "text-gray-700"}
+                  />
+                </div>
+              </ListItemIcon>
+              <ListItemText>
+                <Text
+                  classes="capitalize"
+                  size="sm"
+                  weight="600"
+                  variant="blue"
+                >
+                  settings
+                </Text>
               </ListItemText>
             </ListItem>
           </div>
           <ListItem button>
             <ListItemIcon>
-              <div className="bg-indigo-100 p-2 rounded -mx-2 sm:-mx-1">
+              <div className="bg-blue-100 p-2 rounded -mx-2 sm:-mx-1">
                 <ExitToAppIcon
                   className={open ? "text-blue-700" : "text-blue-700"}
                 />
               </div>
             </ListItemIcon>
             <ListItemText>
-              <span className="text-sm text-purple-800 font-bold">Logout</span>
+              <Text classes="capitalize" size="sm" weight="600" variant="blue">
+                Logout
+              </Text>
             </ListItemText>
           </ListItem>
         </List>
