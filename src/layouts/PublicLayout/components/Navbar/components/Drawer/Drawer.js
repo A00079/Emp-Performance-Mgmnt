@@ -444,8 +444,8 @@ export default function MiniDrawer() {
                 ""
               ) : (
                 <img
-                  src="http://adsrevenue.co/img/final-logo.png"
-                  className="hidden sm:block object-contain object-cover w-16 h-16 py-4 -mx-6"
+                  src="./img/brandlogo.png"
+                  className="hidden sm:block object-contain object-fit w-12 h-12 py-2 -mx-3"
                 />
               )}
               <IconButton
@@ -462,7 +462,7 @@ export default function MiniDrawer() {
             </div>
             <div className="flex flex-col ml-4">
               <Typography className={classes.title} variant="h6" noWrap>
-                <Text variant="blue" weight="700">
+                <Text variant="infoDark" weight="700">
                   AdsRevenue
                 </Text>
               </Typography>

@@ -7,7 +7,7 @@ const MultiRadialPieChart = () => {
     const [options, setOptions] = useState(
         {
             chart: {
-                width: 380,
+                width: 180,
                 type: 'polarArea'
             },
             labels: ['Rose A', 'Rose B', 'Rose C', 'Rose D', 'Rose E'],
@@ -46,7 +46,7 @@ const MultiRadialPieChart = () => {
     );
     return (
         <div id="chart">
-            <ReactApexChart options={options} series={series} type="polarArea" height={170} />
+            <ReactApexChart options={options} series={series} type="polarArea" height={160} />
         </div>
     )
 }
