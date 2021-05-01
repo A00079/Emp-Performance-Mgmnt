@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     nested: {
         paddingTop: theme.spacing(0),
         paddingLeft: theme.spacing(4),
+        paddingBottom: theme.spacing(0),
     },
 }));
 
@@ -110,8 +111,8 @@ const DynamicListItems = (props) => {
                                                                 <Text
                                                                     classes="capitalize"
                                                                     size="xs"
-                                                                    weight="700"
-                                                                    variant="infoDark"
+                                                                    weight="800"
+                                                                    variant="black"
                                                                 >
                                                                     {sub_el}
                                                                 </Text>

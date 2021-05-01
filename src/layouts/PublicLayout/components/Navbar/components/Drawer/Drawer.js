@@ -201,10 +201,10 @@ export default function MiniDrawer() {
     },
     {
       'id': 'manageemployees',
-      'itemname': 'manage employees',
-      'hasdropdown': false,
+      'itemname': 'manage employee',
+      'hasdropdown': true,
       'isexpanded': false,
-      'subitemlist':[]
+      'subitemlist':['Add Employee','View Employee']
     },
     {
       'id': 'manageaffiliates',
