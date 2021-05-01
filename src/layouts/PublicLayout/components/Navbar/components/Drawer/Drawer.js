@@ -91,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     display: "flex",
     alignItems: "center",
+    backgroundColor:'#fff',
     justifyContent: "space-between",
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
@@ -530,10 +531,10 @@ export default function MiniDrawer() {
         }}
       >
         <div className={classes.toolbar}>
-          <div className="pl-4 ">
+          <div className="pl-4">
             <img
               src="http://adsrevenue.co/img/final-logo.png"
-              className="mx-auto"
+              className="mx-auto object-contain object-fit w-40 h-8"
             />
           </div>
           <IconButton onClick={handleDrawerClose}>
@@ -561,7 +562,7 @@ export default function MiniDrawer() {
                         className="ml-1 object-contain object-cover w-4 h-4"
                       />
                     </div>
-                    <p className="text-gray-500">clerkkent@gmail.com</p>
+                    <p className="text-gray-600 font-medium text-xs">clerkkent@gmail.com</p>
                   </div>
                 </div>
               </div>
