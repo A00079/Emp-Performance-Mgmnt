@@ -49,3 +49,6 @@ li:hover > button svg {
   background-color: #888;
   background: linear-gradient(73.93deg, #448cff 5.81%, #0046b6 71.48%);
 }
+.hide-vertical-scroll::-webkit-scrollbar {
+  display: none !important;
+}

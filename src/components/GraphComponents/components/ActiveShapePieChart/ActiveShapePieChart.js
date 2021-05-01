@@ -27,15 +27,15 @@ const renderActiveShape = (props) => {
   const cos = Math.cos(-RADIAN * midAngle);
   const sx = cx + (outerRadius + 10) * cos;
   const sy = cy + (outerRadius + 10) * sin;
-  const mx = cx + (outerRadius + 30) * cos;
-  const my = cy + (outerRadius + 30) * sin;
-  const ex = mx + (cos >= 0 ? 1 : -1) * 22;
+  const mx = cx + (outerRadius + 15) * cos;
+  const my = cy + (outerRadius + 15) * sin;
+  const ex = mx + (cos >= 0 ? 1 : -1) * 8;
   const ey = my;
   const textAnchor = cos >= 0 ? "start" : "end";
 
   return (
     <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill} className='font-bold'>
+      <text x={cx} y={cy} dy={4} textAnchor="middle" fill={fill} className='font-bold'>
         {payload.name}
       </text>
       <Sector
@@ -64,12 +64,12 @@ const renderActiveShape = (props) => {
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
       <text
         className="font-bold"
-        x={ex + (cos >= 0 ? 1 : -1) * 12}
+        x={ex + (cos >= 0 ? 1 : -1) * 4}
         y={ey}
         textAnchor={textAnchor}
         fill="#1D4ED8"
-      >{`PV ${value}`}</text>
-      <text
+      >{`${value}`}</text>
+      {/* <text
         className="font-semibold"
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
@@ -78,7 +78,7 @@ const renderActiveShape = (props) => {
         fill="#999"
       >
         {`(Rate ${(percent * 100).toFixed(2)}%)`}
-      </text>
+      </text> */}
     </g>
   );
 };
@@ -93,15 +93,16 @@ export default function ActiveShapePieChart() {
   );
 
   return (
-    <PieChart width={450} height={400}>
+    <PieChart width={205} height={130}>
       <Pie
+        className="text-xs"
         activeIndex={activeIndex}
         activeShape={renderActiveShape}
         data={data}
-        cx={200}
-        cy={200}
-        innerRadius={60}
-        outerRadius={80}
+        cx={110}
+        cy={60}
+        innerRadius={40}
+        outerRadius={50}
         fill="#8884d8"
         dataKey="value"
         onMouseEnter={onPieEnter}
