@@ -53,7 +53,7 @@ const DynamicListItems = (props) => {
         renderListItems.map((el_list, index) => {
             if (el_list.id === item.id && item.isexpanded) {
                 el_list.isexpanded = false;
-            } else {
+            } else if(el_list.id === item.id && !item.isexpanded){
                 el_list.isexpanded = true;
             }
         })

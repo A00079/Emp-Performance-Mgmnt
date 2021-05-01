@@ -11,5 +11,4 @@ const Card = ({ shadow, color, children, rounded, classes }) => {
     </div>
   );
 };
-
 export default Card;
