@@ -26,6 +26,8 @@ import { Avatar, CustomDropDown, DynamicListItems } from "../../components";
 import HistoryIcon from "@material-ui/icons/History";
 import Button from "@material-ui/core/Button";
 import { Text } from "../../../../../../components";
+import { connect } from "react-redux";
+import { drawerState } from "../../../../../../store/actions";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -58,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "!important hidden",
     flexShrink: 0,
     whiteSpace: "nowrap",
-    overflowY: 'overlay',
+    overflowY: "overlay",
     "&::-webkit-scrollbar": {
       display: "none !important",
     },
@@ -68,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerOpen: {
     width: drawerWidth,
-    overflowY: 'overlay',
+    overflowY: "overlay",
     "&::-webkit-scrollbar": {
       display: "none !important",
     },
@@ -91,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     display: "flex",
     alignItems: "center",
-    backgroundColor:'#fff',
+    backgroundColor: "#fff",
     justifyContent: "space-between",
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
@@ -174,75 +176,75 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MiniDrawer() {
+const MiniDrawer = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [listData, setListData] = React.useState([
     {
-      'id': 'dashboard',
-      'itemname': 'dashboard',
-      'hasdropdown': false,
-      'isexpanded': false,
-      'subitemlist':[]
+      id: "dashboard",
+      itemname: "dashboard",
+      hasdropdown: false,
+      isexpanded: false,
+      subitemlist: [],
     },
     {
-      'id': 'offers',
-      'itemname': 'offers',
-      'hasdropdown': false,
-      'isexpanded': false,
-      'subitemlist':[]
+      id: "offers",
+      itemname: "offers",
+      hasdropdown: false,
+      isexpanded: false,
+      subitemlist: [],
     },
     {
-      'id': 'reports',
-      'itemname': 'reports',
-      'hasdropdown': false,
-      'isexpanded': false,
-      'subitemlist':[]
+      id: "reports",
+      itemname: "reports",
+      hasdropdown: false,
+      isexpanded: false,
+      subitemlist: [],
     },
     {
-      'id': 'manageemployees',
-      'itemname': 'manage employee',
-      'hasdropdown': true,
-      'isexpanded': false,
-      'subitemlist':['Add Employee','View Employee']
+      id: "manageemployees",
+      itemname: "manage employee",
+      hasdropdown: true,
+      isexpanded: false,
+      subitemlist: ["Add Employee", "View Employee"],
     },
     {
-      'id': 'manageaffiliates',
-      'itemname': 'manage affiliates',
-      'hasdropdown': false,
-      'isexpanded': false,
-      'subitemlist':[]
+      id: "manageaffiliates",
+      itemname: "manage affiliates",
+      hasdropdown: false,
+      isexpanded: false,
+      subitemlist: [],
     },
     {
-      'id': 'manageemail',
-      'itemname': 'manage emails',
-      'hasdropdown': true,
-      'isexpanded': false,
-      'subitemlist':['Single Email','Bulk Email','Templated Email']
+      id: "manageemail",
+      itemname: "manage emails",
+      hasdropdown: true,
+      isexpanded: false,
+      subitemlist: ["Single Email", "Bulk Email", "Templated Email"],
     },
     {
-      'id': 'managesms',
-      'itemname': 'manage sms',
-      'hasdropdown': false,
-      'isexpanded': false,
-      'subitemlist':[]
+      id: "managesms",
+      itemname: "manage sms",
+      hasdropdown: false,
+      isexpanded: false,
+      subitemlist: [],
     },
     {
-      'id': 'settings',
-      'itemname': 'settings',
-      'hasdropdown': false,
-      'isexpanded': false,
-      'subitemlist':[]
+      id: "settings",
+      itemname: "settings",
+      hasdropdown: false,
+      isexpanded: false,
+      subitemlist: [],
     },
     {
-      'id': 'logout',
-      'itemname': 'logout',
-      'hasdropdown': false,
-      'isexpanded': false,
-      'subitemlist':[]
+      id: "logout",
+      itemname: "logout",
+      hasdropdown: false,
+      isexpanded: false,
+      subitemlist: [],
     },
-  ])
+  ]);
 
   React.useEffect(() => {
     getCurrentDate();
@@ -314,10 +316,12 @@ export default function MiniDrawer() {
   };
   const handleDrawerOpen = () => {
     setOpen(true);
+    props.drawerState(true);
   };
 
   const handleDrawerClose = () => {
     setOpen(false);
+    props.drawerState(false);
   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -524,7 +528,7 @@ export default function MiniDrawer() {
           [classes.drawerClose]: !open,
         })}
         classes={{
-          paper: clsx('hide-vertical-scroll', {
+          paper: clsx("hide-vertical-scroll", {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
           }),
@@ -562,7 +566,9 @@ export default function MiniDrawer() {
                         className="ml-1 object-contain object-cover w-4 h-4"
                       />
                     </div>
-                    <p className="text-gray-600 font-medium text-xs">clerkkent@gmail.com</p>
+                    <p className="text-gray-600 font-medium text-xs">
+                      clerkkent@gmail.com
+                    </p>
                   </div>
                 </div>
               </div>
@@ -578,10 +584,12 @@ export default function MiniDrawer() {
         ) : (
           ""
         )}
-        <List id='drawer-item-container'>
+        <List id="drawer-item-container">
           <DynamicListItems itemsData={listData} open={open} />
         </List>
       </Drawer>
     </div>
   );
-}
+};
+
+export default connect(null, { drawerState })(MiniDrawer);

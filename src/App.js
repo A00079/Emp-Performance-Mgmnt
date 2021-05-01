@@ -7,16 +7,12 @@ import Routes from "./Routes";
 import "./assets/scss/index.scss";
 
 const App = () => {
-  
-  useEffect(() => {
-
-
-  }, []);
+  // useEffect(() => {}, []);
 
   return (
-    // <Provider store={store}>
-    <Routes />
-    // </Provider>
+    <Provider store={store}>
+      <Routes />
+    </Provider>
   );
 };
 export default App;

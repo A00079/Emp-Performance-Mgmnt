@@ -1,6 +1,6 @@
-// import { combineReducers } from "redux";
-// import example from "./example";
+import { combineReducers } from "redux";
+import ui from "./uiReducer";
 
-// export default combineReducers({
-// 	example: ex,
-// });
+export default combineReducers({
+  ui,
+});
