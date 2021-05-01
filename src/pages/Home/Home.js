@@ -10,13 +10,15 @@ const Home = () => {
       <div className="grid grid-cols-4 gap-4">
         <div className="col-span-1">
           <Card shadow="md" rounded="md">
-            <div className="p-4 space-y-4">
+            <div className="">
               {[...new Array(10)].map((el, index) => (
-                <div className="flex space-x-6">
-                  <div className="">
-                    <Text variant="blue" weight="800">
-                      {index}.
-                    </Text>
+                <div
+                  className={`flex space-x-6 items-center ${
+                    index % 2 !== 1 && "bg-gray-50"
+                  }`}
+                >
+                  <div className="p-2">
+                    <img src="/img/profile.jpg" className="w-10 rounded-full" />
                   </div>
                   <div>
                     <Text weight="600" variant="primary">
