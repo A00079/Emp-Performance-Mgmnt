@@ -13,9 +13,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
@@ -25,30 +22,11 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import { Avatar, CustomDropDown, ThreeDotMenu } from "../../components";
-import StoreIcon from "@material-ui/icons/Store";
-import Collapse from "@material-ui/core/Collapse";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-import StarBorder from "@material-ui/icons/StarBorder";
-import AddBoxIcon from "@material-ui/icons/AddBox";
-import EditIcon from "@material-ui/icons/Edit";
-import GroupAddIcon from "@material-ui/icons/GroupAdd";
-import ExploreIcon from "@material-ui/icons/Explore";
-import RoomIcon from "@material-ui/icons/Room";
-import EditLocationIcon from "@material-ui/icons/EditLocation";
-import DeleteIcon from "@material-ui/icons/Delete";
-import AddLocationIcon from "@material-ui/icons/AddLocation";
-import PersonPinCircleIcon from "@material-ui/icons/PersonPinCircle";
-import AccessibilityIcon from "@material-ui/icons/Accessibility";
-import GroupIcon from "@material-ui/icons/Group";
-import AddAlarmIcon from "@material-ui/icons/AddAlarm";
-import VisibilityIcon from "@material-ui/icons/Visibility";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Avatar, CustomDropDown, DynamicListItems } from "../../components";
 import HistoryIcon from "@material-ui/icons/History";
 import Button from "@material-ui/core/Button";
-import { Gauge } from "../../../../../../components/GraphComponents/components";
 import { Text } from "../../../../../../components";
+
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,14 +58,19 @@ const useStyles = makeStyles((theme) => ({
     overflow: "!important hidden",
     flexShrink: 0,
     whiteSpace: "nowrap",
+    overflowY: 'overlay',
+    "&::-webkit-scrollbar": {
+      display: "none !important",
+    },
     [theme.breakpoints.down("sm")]: {
       position: "absolute",
     },
   },
   drawerOpen: {
     width: drawerWidth,
+    overflowY: 'overlay',
     "&::-webkit-scrollbar": {
-      display: "none",
+      display: "none !important",
     },
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
@@ -194,28 +177,75 @@ export default function MiniDrawer() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const [activePanelNumber, setActivePanelNumber] = React.useState("1");
+  const [listData, setListData] = React.useState([
+    {
+      'id': 'dashboard',
+      'itemname': 'dashboard',
+      'hasdropdown': false,
+      'isexpanded': false,
+      'subitemlist':[]
+    },
+    {
+      'id': 'offers',
+      'itemname': 'offers',
+      'hasdropdown': false,
+      'isexpanded': false,
+      'subitemlist':[]
+    },
+    {
+      'id': 'reports',
+      'itemname': 'reports',
+      'hasdropdown': false,
+      'isexpanded': false,
+      'subitemlist':[]
+    },
+    {
+      'id': 'manageemployees',
+      'itemname': 'manage employees',
+      'hasdropdown': false,
+      'isexpanded': false,
+      'subitemlist':[]
+    },
+    {
+      'id': 'manageaffiliates',
+      'itemname': 'manage affiliates',
+      'hasdropdown': false,
+      'isexpanded': false,
+      'subitemlist':[]
+    },
+    {
+      'id': 'manageemail',
+      'itemname': 'manage emails',
+      'hasdropdown': true,
+      'isexpanded': false,
+      'subitemlist':['Single Email','Bulk Email','Templated Email']
+    },
+    {
+      'id': 'managesms',
+      'itemname': 'manage sms',
+      'hasdropdown': false,
+      'isexpanded': false,
+      'subitemlist':[]
+    },
+    {
+      'id': 'settings',
+      'itemname': 'settings',
+      'hasdropdown': false,
+      'isexpanded': false,
+      'subitemlist':[]
+    },
+    {
+      'id': 'logout',
+      'itemname': 'logout',
+      'hasdropdown': false,
+      'isexpanded': false,
+      'subitemlist':[]
+    },
+  ])
 
   React.useEffect(() => {
     getCurrentDate();
   });
-
-  const activePanel = (item) => {
-    if (item == "managestore") {
-      setActivePanelNumber("1");
-    } else if (item == "salesteam") {
-      setActivePanelNumber("2");
-    } else if (item == "manageroutes") {
-      setActivePanelNumber("3");
-    } else if (item == "assignroutes") {
-      setActivePanelNumber("4");
-    } else if (item == "createschedule") {
-      setActivePanelNumber("5");
-    } else if (item == "viewhistory") {
-      setActivePanelNumber("6");
-    }
-    handleDrawerOpen();
-  };
 
   const getCurrentDate = () => {
     var today = new Date();
@@ -229,7 +259,6 @@ export default function MiniDrawer() {
       "Friday",
       "Saturday",
     ];
-    console.log("Today is : " + daylist[day] + ".");
     var hour = today.getHours();
     var minute = today.getMinutes();
     var second = today.getSeconds();
@@ -288,11 +317,6 @@ export default function MiniDrawer() {
 
   const handleDrawerClose = () => {
     setOpen(false);
-    handleAssignRoutes("close");
-    handleStore("close");
-    handleCreateSchedule("close");
-    handleSalesTeamRoutes("close");
-    handleSalesPerson("close");
   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -316,58 +340,6 @@ export default function MiniDrawer() {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const [openStore, setOpenStore] = React.useState(false);
-  const [openSalesPerson, setOpenSalesPerson] = React.useState(false);
-  const [openAssignRoutes, setOpenAssignRoutes] = React.useState(false);
-  const [openCreateSchedule, setOpenCreateSchedule] = React.useState(false);
-  const [openSalesTeamRoutes, setOpenSalesTeamRoutes] = React.useState(false);
-
-  const handleCreateSchedule = (el) => {
-    if (!!el) {
-      if (el == "close") {
-        setOpenCreateSchedule(false);
-      } else {
-        setOpenCreateSchedule(!openCreateSchedule);
-      }
-    }
-  };
-  const handleAssignRoutes = (el) => {
-    if (!!el) {
-      if (el == "close") {
-        setOpenAssignRoutes(false);
-      } else {
-        setOpenAssignRoutes(!openAssignRoutes);
-      }
-    }
-  };
-  const handleSalesTeamRoutes = (el) => {
-    if (!!el) {
-      if (el == "close") {
-        setOpenSalesTeamRoutes(false);
-      } else {
-        setOpenSalesTeamRoutes(!openSalesTeamRoutes);
-      }
-    }
-  };
-  const handleSalesPerson = (el) => {
-    if (!!el) {
-      if (el == "close") {
-        setOpenSalesPerson(false);
-      } else {
-        setOpenSalesPerson(!openSalesPerson);
-      }
-    }
-  };
-  const handleStore = (el) => {
-    if (!!el) {
-      if (el == "close") {
-        setOpenStore(false);
-      } else {
-        setOpenStore(!openStore);
-      }
-    }
   };
 
   const menuId = "primary-search-account-menu";
@@ -551,7 +523,7 @@ export default function MiniDrawer() {
           [classes.drawerClose]: !open,
         })}
         classes={{
-          paper: clsx({
+          paper: clsx('hide-vertical-scroll', {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
           }),
@@ -573,428 +545,40 @@ export default function MiniDrawer() {
           </IconButton>
         </div>
         <Divider />
-
-        <List>
-          <div
-            onClick={() => activePanel("managestore")}
-            className={
-              activePanelNumber == "1"
-                ? "border-blue-700 border-l-4 bg-blue-50"
-                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
-            }
-          >
-            <ListItem button onClick={handleStore}>
-              <ListItemIcon>
-                <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
-                  <StoreIcon
-                    className={open ? "text-red-800" : "text-red-800"}
-                  />
+        <List className="bg-blue-50">
+          <ListItem className="bg-green-50">
+            {open ? (
+              <div className="w-full">
+                <div className="h-full flex flex-row justify-start items-center rounded-lg">
+                  <Avatar />
+                  <div className="flex-grow">
+                    <div className="flex flex-row justify-start items-center">
+                      <h2 className="text-blue-800 title-font font-bold">
+                        Clerk Kent
+                      </h2>
+                      <img
+                        src="/img/checkmark.png"
+                        className="ml-1 object-contain object-cover w-4 h-4"
+                      />
+                    </div>
+                    <p className="text-gray-500">clerkkent@gmail.com</p>
+                  </div>
                 </div>
-              </ListItemIcon>
-              <ListItemText>
-                <Text
-                  classes="capitalize"
-                  size="sm"
-                  weight="600"
-                  variant="blue"
-                >
-                  Dashboard
-                </Text>
-              </ListItemText>
-              {openStore ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-          </div>
-          <Collapse in={openStore} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <div className="bg-indigo-100 p-0 rounded ">
-                    <AddBoxIcon
-                      className={open ? "text-green-700" : "text-green-700"}
-                    />
-                  </div>
-                </ListItemIcon>
-                <ListItemText>
-                  <span className="text-green-700 font-bold text-xs">
-                    Add Shops
-                  </span>
-                </ListItemText>
-              </ListItem>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <div className="bg-indigo-100 p-0 rounded">
-                    <EditIcon
-                      className={open ? "text-green-700" : "text-green-700"}
-                    />
-                  </div>
-                </ListItemIcon>
-                <ListItemText>
-                  <span className="text-green-700 font-bold text-xs">
-                    Update Shops
-                  </span>
-                </ListItemText>
-              </ListItem>
-            </List>
-          </Collapse>
-          <div
-            onClick={() => activePanel("salesteam")}
-            className={
-              activePanelNumber == "2"
-                ? "border-blue-700 border-l-4 bg-blue-50"
-                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
-            }
-          >
-            <ListItem button onClick={handleSalesPerson}>
-              <ListItemIcon>
-                <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
-                  <GroupAddIcon
-                    className={open ? "text-purple-800" : "text-purple-800"}
-                  />
-                </div>
-              </ListItemIcon>
-              <ListItemText>
-                <Text
-                  classes="capitalize"
-                  size="sm"
-                  weight="600"
-                  variant="blue"
-                >
-                  Offer
-                </Text>
-              </ListItemText>
-              {openSalesPerson ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-          </div>
-          <Collapse in={openSalesPerson} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <div className="bg-indigo-100 p-0 rounded ">
-                    <AddBoxIcon
-                      className={open ? "text-green-700" : "text-green-700"}
-                    />
-                  </div>
-                </ListItemIcon>
-                <ListItemText>
-                  <span className="text-green-700 font-bold text-xs break-words">
-                    Add Sales/Team
-                  </span>
-                </ListItemText>
-              </ListItem>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <div className="bg-indigo-100 p-0 rounded ">
-                    <EditIcon
-                      className={open ? "text-yellow-500" : "text-yellow-500"}
-                    />
-                  </div>
-                </ListItemIcon>
-                <ListItemText>
-                  <span className="text-yellow-500 font-bold text-xs">
-                    Update Sales/Team
-                  </span>
-                </ListItemText>
-              </ListItem>
-            </List>
-          </Collapse>
-          <div
-            onClick={() => activePanel("manageroutes")}
-            className={
-              activePanelNumber == "3"
-                ? "border-blue-700 border-l-4 bg-blue-50"
-                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
-            }
-          >
-            <ListItem button onClick={handleSalesTeamRoutes}>
-              <ListItemIcon>
-                <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
-                  <ExploreIcon
-                    className={open ? "text-yellow-500" : "text-yellow-500"}
-                  />
-                </div>
-              </ListItemIcon>
-              <ListItemText>
-                <Text
-                  classes="capitalize"
-                  size="sm"
-                  weight="600"
-                  variant="blue"
-                >
-                  Reports
-                </Text>
-              </ListItemText>
-              {openSalesTeamRoutes ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-          </div>
-          <Collapse in={openSalesTeamRoutes} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <div className="bg-indigo-100 p-0 rounded ">
-                    <AddLocationIcon
-                      className={open ? "text-green-700" : "text-green-700"}
-                    />
-                  </div>
-                </ListItemIcon>
-                <ListItemText>
-                  <span className="text-green-700 font-bold text-xs break-words">
-                    Add Routes
-                  </span>
-                </ListItemText>
-              </ListItem>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <div className="bg-indigo-100 p-0 rounded ">
-                    <EditLocationIcon
-                      className={open ? "text-yellow-500" : "text-yellow-500"}
-                    />
-                  </div>
-                </ListItemIcon>
-                <ListItemText>
-                  <span className="text-yellow-500 font-bold text-xs">
-                    Update Routes
-                  </span>
-                </ListItemText>
-              </ListItem>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <div className="bg-indigo-100 p-0 rounded ">
-                    <DeleteIcon
-                      className={open ? "text-red-600" : "text-red-600"}
-                    />
-                  </div>
-                </ListItemIcon>
-                <ListItemText>
-                  <span className="text-red-500 font-bold text-xs">
-                    Delete Routes
-                  </span>
-                </ListItemText>
-              </ListItem>
-            </List>
-          </Collapse>
-          <div
-            onClick={() => activePanel("assignroutes")}
-            className={
-              activePanelNumber == "4"
-                ? "border-blue-700 border-l-4 bg-blue-50"
-                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
-            }
-          >
-            <ListItem button onClick={handleAssignRoutes}>
-              <ListItemIcon>
-                <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
-                  <PersonPinCircleIcon
-                    className={open ? "text-indigo-500" : "text-indigo-500"}
-                  />
-                </div>
-              </ListItemIcon>
-              <ListItemText>
-                <Text
-                  classes="capitalize"
-                  size="sm"
-                  weight="600"
-                  variant="blue"
-                >
-                  Employee
-                </Text>
-              </ListItemText>
-              {openAssignRoutes ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-          </div>
-          <Collapse in={openAssignRoutes} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <div className="bg-indigo-100 p-0 rounded ">
-                    <AccessibilityIcon
-                      className={open ? "text-red-800" : "text-red-800"}
-                    />
-                  </div>
-                </ListItemIcon>
-                <ListItemText>
-                  <span className="text-gray-700 font-bold text-xs break-words">
-                    Sales Person
-                  </span>
-                </ListItemText>
-              </ListItem>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <div className="bg-indigo-100 p-0 rounded ">
-                    <GroupIcon
-                      className={open ? "text-green-700" : "text-green-700"}
-                    />
-                  </div>
-                </ListItemIcon>
-                <ListItemText>
-                  <span className="text-gray-700 font-bold text-xs">Team</span>
-                </ListItemText>
-              </ListItem>
-            </List>
-          </Collapse>
-          <div
-            onClick={() => activePanel("createschedule")}
-            className={
-              activePanelNumber == "5"
-                ? "border-blue-700 border-l-4 bg-blue-50"
-                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
-            }
-          >
-            <ListItem button onClick={handleCreateSchedule}>
-              <ListItemIcon>
-                <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
-                  <AddAlarmIcon
-                    className={open ? "text-green-700" : "text-green-700"}
-                  />
-                </div>
-              </ListItemIcon>
-              <ListItemText>
-                <Text
-                  classes="capitalize"
-                  size="sm"
-                  weight="600"
-                  variant="blue"
-                >
-                  Affiliates
-                </Text>
-              </ListItemText>
-              {openCreateSchedule ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-          </div>
-          <Collapse in={openCreateSchedule} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <div className="bg-indigo-100 p-0 rounded ">
-                    <AccessibilityIcon
-                      className={open ? "text-red-800" : "text-red-800"}
-                    />
-                  </div>
-                </ListItemIcon>
-                <ListItemText>
-                  <span className="text-gray-700 font-semibold text-xs break-words">
-                    Sales Person
-                  </span>
-                </ListItemText>
-              </ListItem>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <div className="bg-indigo-100 p-0 rounded ">
-                    <GroupIcon
-                      className={open ? "text-green-700" : "text-green-700"}
-                    />
-                  </div>
-                </ListItemIcon>
-                <ListItemText>
-                  <Text
-                    classes="capitalize"
-                    size="sm"
-                    weight="600"
-                    variant="blue"
-                  >
-                    Team
-                  </Text>
-                </ListItemText>
-              </ListItem>
-            </List>
-          </Collapse>
-          <div
-            onClick={() => activePanel("viewhistory")}
-            className={
-              activePanelNumber == "6"
-                ? "border-blue-700 border-l-4 bg-blue-50"
-                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
-            }
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
-                  <VisibilityIcon
-                    className={open ? "text-gray-700" : "text-gray-700"}
-                  />
-                </div>
-              </ListItemIcon>
-              <ListItemText>
-                <Text
-                  classes="capitalize"
-                  size="sm"
-                  weight="600"
-                  variant="blue"
-                >
-                  Email
-                </Text>
-              </ListItemText>
-            </ListItem>
-          </div>
-          <div
-            onClick={() => activePanel("viewhistory")}
-            className={
-              activePanelNumber == "6"
-                ? "border-blue-700 border-l-4 bg-blue-50"
-                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
-            }
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
-                  <VisibilityIcon
-                    className={open ? "text-gray-700" : "text-gray-700"}
-                  />
-                </div>
-              </ListItemIcon>
-              <ListItemText>
-                <Text
-                  classes="capitalize"
-                  size="sm"
-                  weight="600"
-                  variant="blue"
-                >
-                  SMS
-                </Text>
-              </ListItemText>
-            </ListItem>
-          </div>
-          <div
-            onClick={() => activePanel("viewhistory")}
-            className={
-              activePanelNumber == "6"
-                ? "border-blue-700 border-l-4 bg-blue-50"
-                : "hover:border-blue-700 border-l-4 hover:bg-blue-50"
-            }
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
-                  <VisibilityIcon
-                    className={open ? "text-gray-700" : "text-gray-700"}
-                  />
-                </div>
-              </ListItemIcon>
-              <ListItemText>
-                <Text
-                  classes="capitalize"
-                  size="sm"
-                  weight="600"
-                  variant="blue"
-                >
-                  settings
-                </Text>
-              </ListItemText>
-            </ListItem>
-          </div>
-          <ListItem button>
-            <ListItemIcon>
-              <div className="bg-blue-100 p-2 rounded -mx-2 sm:-mx-1">
-                <ExitToAppIcon
-                  className={open ? "text-blue-700" : "text-blue-700"}
-                />
               </div>
-            </ListItemIcon>
-            <ListItemText>
-              <Text classes="capitalize" size="sm" weight="600" variant="blue">
-                Logout
-              </Text>
-            </ListItemText>
+            ) : (
+              <div className="-mx-4 sm:-mx-2 p-0">
+                <Avatar />
+              </div>
+            )}
           </ListItem>
+        </List>
+        {open ? (
+          <h4 className="text-gray-600 font-bold ml-3 pt-2">Navigation</h4>
+        ) : (
+          ""
+        )}
+        <List id='drawer-item-container'>
+          <DynamicListItems itemsData={listData} open={open} />
         </List>
       </Drawer>
     </div>
