@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Text from "../Text/Text";
 
-const DropDown = () => {
+const DropDown = ({ label, options, setDropDownOption, def }) => {
+  const [option, setOption] = useState(def ? def : !def ? label : null);
+
+  const handleOptionSelection = (selectedOption) => {
+    setDropDownOption(selectedOption);
+    setOption(selectedOption);
+  };
+
   return (
-    <div class="group inline-block">
-      <button class="outline-none focus:outline-none border px-3 py-1 bg-white rounded-sm flex items-center min-w-32">
+    <div class="group relative">
+      <button class=" w-full outline-none focus:outline-none border px-3 py-1 bg-white rounded-sm flex items-center min-w-32">
         <span class="pr-1 flex-1">
-          <Text variant="primary" size="sm" weight="700">
-            Dropdown
+          <Text variant="primary" size="sm" weight="700" classes="capitalize">
+            {def !== option ? option : def}
           </Text>
         </span>
         <span>
@@ -22,24 +29,20 @@ const DropDown = () => {
         </span>
       </button>
       <ul
-        class="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
+        class=" w-full absolute bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
                   transition duration-150 ease-in-out origin-top min-w-32 z-20"
       >
-        <li class="rounded-sm px-3 py-1 hover:bg-gray-100 cursor-pointer">
-          <Text variant="primary" size="sm">
-            Popularity
-          </Text>
-        </li>
-        <li class="rounded-sm px-3 py-1 hover:bg-gray-100 cursor-pointer">
-          <Text variant="primary" size="sm">
-            High to low
-          </Text>
-        </li>
-        <li class="rounded-sm px-3 py-1 hover:bg-gray-100 cursor-pointer">
-          <Text variant="primary" size="sm">
-            Low to High
-          </Text>
-        </li>
+        {options.map((el, index) => (
+          <li
+            onClick={() => handleOptionSelection(el)}
+            key={index}
+            class="rounded-sm px-3 py-1 hover:bg-gray-100 cursor-pointer"
+          >
+            <Text variant="primary" size="sm" classes="capitalize">
+              {el}
+            </Text>
+          </li>
+        ))}
       </ul>
     </div>
   );

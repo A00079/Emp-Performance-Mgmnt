@@ -52,3 +52,43 @@ li:hover > button svg {
 .hide-vertical-scroll::-webkit-scrollbar {
   display: none !important;
 }
+
+/* ========firebase phone verification========= */
+.firebaseui-card-footer {
+  display: none;
+}
+.mdl-card {
+  background-color: #448cff;
+}
+
+.mdl-card.mdl-shadow--2dp {
+  width: 100%;
+  max-width: 100%;
+  box-shadow: none;
+}
+
+.firebaseui-container.mdl-card {
+  background-color: #fbf9f9;
+}
+.firebaseui-subtitle.firebaseui-title {
+  color: red;
+}
+.mdl-dialog.firebaseui-dialog {
+  height: fit-content;
+  outline: none;
+}
+.mdl-dialog.firebaseui-list-box-dialog {
+  max-height: none;
+  outline: none;
+}
+/* .mdl-dialog firebaseui-dialog firebaseui-id-dialog firebaseui-list-box-dialog */
+
+#firebaseui_container
+  > div
+  > form
+  > div.firebaseui-card-actions
+  > div
+  > button {
+  background-color: rgb(54, 131, 202);
+}
+  

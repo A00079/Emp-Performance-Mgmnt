@@ -14,6 +14,8 @@ import {
   isBrowser,
   isMobile,
 } from "react-device-detect";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 const Routes = () => {
   return (
     <Router>
@@ -23,6 +25,18 @@ const Routes = () => {
           path="/"
           layout={PublicLayout}
           component={Home}
+        />
+        <WithLayoutRoute
+          exact
+          path="/signup"
+          layout={SecondaryPublicLayout}
+          component={Signup}
+        />
+        <WithLayoutRoute
+          exact
+          path="/Login"
+          layout={SecondaryPublicLayout}
+          component={Login}
         />
         <WithLayoutRoute
           exact
