@@ -37,27 +37,21 @@ const DynamicListEmail = (props) => {
   };
 
   const activePanel = (item) => {
-    let listItems = document.getElementById("drawer-item-container");
-    let element = document.querySelector(`${"#" + item}`);
+    let listItems = document.getElementById('drawer-item-container-email');
+    let element = document.querySelector(`${'#' + item}`);
 
     listItems.childNodes.forEach((el, index) => {
-      el.classList.remove("border-blue-700", "border-l-4", "bg-blue-50");
-      el.classList.add(
-        "border-white",
-        "border-l-4",
-        "bg-white",
-        "hover:border-blue-700",
-        "border-l-4",
-        "hover:bg-blue-50"
-      );
-    });
-    element.classList.add("border-blue-700", "border-l-4", "bg-blue-50");
+      el.classList.remove('border-blue-700', 'border-l-4', 'bg-blue-50');
+      el.classList.add('border-white', 'border-l-4', 'bg-white', 'hover:border-blue-700', 'border-l-4', 'hover:bg-blue-50');
+    })
+    element.classList.add('border-blue-700', 'border-l-4', 'bg-blue-50');
     // handleDrawerOpen();
   };
   const handleListItem = (item, itemroute) => {
     if (!!itemroute) {
       props.history.push(itemroute);
-    } else {
+    } else if (item.id == 'quickmail' || item.id == 'sent' || item.id == 'bulkmail') {
+      props.funcProvider(item.id);
       renderListItems.map((el_list, index) => {
         if (el_list.id === item.id && item.isexpanded) {
           el_list.isexpanded = false;
