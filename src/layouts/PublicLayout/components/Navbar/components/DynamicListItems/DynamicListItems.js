@@ -10,6 +10,7 @@ import Collapse from '@material-ui/core/Collapse';
 import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import LabelIcon from '@material-ui/icons/Label';
+import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     nested: {
@@ -17,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: theme.spacing(4),
         paddingBottom: theme.spacing(0),
     },
+    itemicon: {
+        minWidth: '34px !important'
+    }
 }));
 
 
@@ -44,21 +48,19 @@ const DynamicListItems = (props) => {
         element.classList.add('border-blue-700', 'border-l-4', 'bg-blue-50');
         // handleDrawerOpen();
     };
-    const handleListItem = (item, el) => {
-        // if (!!el) {
-        //     if (el == "close") {
-        //     } else {
-        //     }
-        // }
-        renderListItems.map((el_list, index) => {
-            if (el_list.id === item.id && item.isexpanded) {
-                el_list.isexpanded = false;
-            } else if (el_list.id === item.id && !item.isexpanded) {
-                el_list.isexpanded = true;
-            }
-        })
-        setRenderListItems([...renderListItems]);
-        console.log('renderListItems', renderListItems);
+    const handleListItem = (item, itemroute) => {
+        if (!!itemroute) {
+            props.history.push(itemroute);
+        } else {
+            renderListItems.map((el_list, index) => {
+                if (el_list.id === item.id && item.isexpanded) {
+                    el_list.isexpanded = false;
+                } else if (el_list.id === item.id && !item.isexpanded) {
+                    el_list.isexpanded = true;
+                }
+            });
+            setRenderListItems([...renderListItems]);
+        }
     }
 
     return (
@@ -73,13 +75,13 @@ const DynamicListItems = (props) => {
                                 onClick={() => activePanel(el.id)}
                                 className='border-white border-l-4 bg-white hover:border-blue-700 border-l-4 hover:bg-blue-50'
                             >
-                                <ListItem button onClick={() => handleListItem(el, null)}>
-                                    <ListItemIcon>
+                                <ListItem button onClick={() => handleListItem(el, el.route)}>
+                                    <ListItemIcon className={classes.itemicon}>
                                         <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
                                             <div dangerouslySetInnerHTML={{ __html: el.itemicon }}></div>
                                         </div>
                                     </ListItemIcon>
-                                    <ListItemText style={{minWidth: '34px'}}>
+                                    <ListItemText>
                                         <Text
                                             classes="capitalize"
                                             size="sm"
@@ -99,8 +101,8 @@ const DynamicListItems = (props) => {
                                             {
                                                 el.subitemlist.map((sub_el, sub_index) => {
                                                     return (
-                                                        <ListItem key={sub_index} button className={classes.nested}>
-                                                            <ListItemIcon>
+                                                        <ListItem key={sub_index} button className={classes.nested} onClick={() => handleListItem(el, sub_el.route)}>
+                                                            <ListItemIcon className={classes.itemicon}>
                                                                 <div className="bg-indigo-100 p-0 rounded ">
                                                                     <LabelIcon
                                                                         className='text-green-700'
@@ -114,7 +116,8 @@ const DynamicListItems = (props) => {
                                                                     weight="800"
                                                                     variant="black"
                                                                 >
-                                                                    {sub_el}
+                                                                    {console.log('sub_el',sub_el)}
+                                                                    {sub_el.item}
                                                                 </Text>
                                                             </ListItemText>
                                                         </ListItem>
@@ -134,4 +137,4 @@ const DynamicListItems = (props) => {
     )
 }
 
-export default DynamicListItems;
+export default withRouter(DynamicListItems);

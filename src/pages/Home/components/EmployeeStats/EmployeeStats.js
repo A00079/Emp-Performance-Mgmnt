@@ -126,10 +126,13 @@ const EmployeeStats = () => {
                         </div>
                         <div className='grid grid-cols-12 gap-1 emp-stats-total-main'>
                             <div className='col-span-8 emp-content'>
-                                <div className='grid grid-cols-12 gap-2 items-center'>
+                                <p className="text-sm text-gray-400 font-bold px-3">Employee Performance</p>
+                                <div className='grid grid-cols-12 gap-1 items-center'>
                                     <div class="col-span-6 p-2 w-full">
                                         <div class="bg-gray-100 h-full flex items-center p-2 rounded-lg">
-                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4"></div>
+                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4">
+                                                <p className='text-lg text-gray-500 font-bold text-center py-2'>TA</p>
+                                            </div>
                                             <div class="flex-grow">
                                                 <CustomProgressBar label="Total Affiliates" prog_no="69595" width_barone="10" width_bartwo="20" width_barthree="40" />
                                             </div>
@@ -137,7 +140,9 @@ const EmployeeStats = () => {
                                     </div>
                                     <div class="col-span-6 p-2 pt-0 w-full mt-2">
                                         <div class="bg-gray-100 h-full flex items-center p-2 rounded-lg">
-                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4"></div>
+                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4">
+                                                <p className='text-lg text-gray-500 font-bold text-center py-2'>TO</p>
+                                            </div>
                                             <div class="flex-grow">
                                                 <CustomProgressBar label="Total Offers" prog_no="595" width_barone="10" width_bartwo="50" width_barthree="30" />
                                             </div>
@@ -145,8 +150,9 @@ const EmployeeStats = () => {
                                     </div>
                                     <div class="col-span-6 p-2 pt-0 w-full">
                                         <div class="bg-gray-100 h-full flex items-center p-2 rounded-lg">
-                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4"></div>
-
+                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4">
+                                                <p className='text-lg text-gray-500 font-bold text-center py-2'>TC</p>
+                                            </div>
                                             <div class="flex-grow">
                                                 <CustomProgressBar label="Total Conversion" prog_no="2395" width_barone="14" width_bartwo="56" width_barthree="45" />
                                             </div>
@@ -154,8 +160,9 @@ const EmployeeStats = () => {
                                     </div>
                                     <div class="col-span-6 p-2 pt-0 w-full">
                                         <div class="bg-gray-100 h-full flex items-center p-2 rounded-lg">
-                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4"></div>
-
+                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4">
+                                                <p className='text-lg text-gray-500 font-bold text-center py-2'>RE</p>
+                                            </div>
                                             <div class="flex-grow">
                                                 <CustomProgressBar label="Revenue" prog_no="98595" width_barone="75" width_bartwo="10" width_barthree="5" />
                                             </div>
@@ -163,8 +170,9 @@ const EmployeeStats = () => {
                                     </div>
                                     <div class="col-span-6 p-2 pt-0 w-full">
                                         <div class="bg-gray-100 h-full flex items-center p-2 rounded-lg">
-                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4"></div>
-
+                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4">
+                                                <p className='text-lg text-gray-500 font-bold text-center py-2'>PY</p>
+                                            </div>
                                             <div class="flex-grow">
                                                 <CustomProgressBar label="Payout" prog_no="19995" width_barone="34" width_bartwo="56" width_barthree="10" />
                                             </div>
@@ -172,8 +180,9 @@ const EmployeeStats = () => {
                                     </div>
                                     <div class="col-span-6 p-2 pt-0 w-full">
                                         <div class="bg-gray-100 h-full flex items-center p-2 rounded-lg">
-                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4"></div>
-
+                                            <div alt="team" class="w-12 h-12 bg-gray-300 rounded-md mr-4">
+                                                <p className='text-lg text-gray-500 font-bold text-center py-2'>ER</p>
+                                            </div>
                                             <div class="flex-grow">
                                                 <CustomProgressBar label="Earning" prog_no="46795" width_barone="10" width_bartwo="20" width_barthree="40" />
                                             </div>
@@ -186,20 +195,20 @@ const EmployeeStats = () => {
                                     <div className='content-media w-full mx-auto'>
                                         <img alt="team" class="w-24 h-20 bg-gray-100 mx-auto object-cover object-center flex-shrink-0" src="./img/addemp.svg" />
                                     </div>
-                                        <div className='flex flex-col w-full mx-auto'>
-                                            <p className='text-center text-sm font-bold text-gray-700'>No employee created yet</p>
-                                            <p className='text-center text-xs font-medium text-gray-400'>Simply create your first employee</p>
-                                            <p className='text-center text-xs font-medium text-gray-400'>Just click on the button</p>
-                                        </div>
-                                        <button className="flex flex-row justify-evenly items-center w-40 rounded-md mx-auto p-2 text-sm font-bold text-white bg-indigo-500">
-                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path></svg>    Create Employee
-                                    </button>
+                                    <div className='flex flex-col w-full mx-auto'>
+                                        <p className='text-center text-sm font-bold text-gray-700'>No employee created yet</p>
+                                        <p className='text-center text-xs font-medium text-gray-400'>Simply create your first employee</p>
+                                        <p className='text-center text-xs font-medium text-gray-400'>Just click on the button</p>
                                     </div>
+                                    <button className="flex flex-row justify-evenly items-center w-40 rounded-md mx-auto p-2 text-sm font-bold text-white bg-indigo-500">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path></svg>    Create Employee
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </React.Fragment>
     )
 }
