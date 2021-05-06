@@ -53,7 +53,7 @@ li:hover > button svg {
   display: none !important;
 }
 
-/* ========firebase phone verification========= */
+/* ========================== firebase phone verification======================= */
 .firebaseui-card-footer {
   display: none;
 }
@@ -81,7 +81,6 @@ li:hover > button svg {
   max-height: none;
   outline: none;
 }
-/* .mdl-dialog firebaseui-dialog firebaseui-id-dialog firebaseui-list-box-dialog */
 
 #firebaseui_container
   > div
@@ -91,4 +90,15 @@ li:hover > button svg {
   > button {
   background-color: rgb(54, 131, 202);
 }
-  
+
+/* ===================circles around the features point in signup================ */
+.feature-point {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 5px;
+
+  border: 2px solid #fff;
+  color: #666;
+  text-align: center;
+}

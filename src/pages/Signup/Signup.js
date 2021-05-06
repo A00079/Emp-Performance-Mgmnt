@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { ImageField } from "../../components";
-import { Form } from "./components";
+import { COLORS } from "../../theme/mainTheme";
+import { Form, Features } from "./components";
 
 const Signup = () => {
   return (
     <div>
       <div className="grid grid-cols-12 gap-5 space-x-4">
-        <div
-          className="col-span-3 bg-blue-100"
-          // style={{ maxWidth: "40%", width: "30%" }}
-        >
+        <div className="col-span-3" style={{ backgroundColor: COLORS.primary }}>
           <div className="flex h-screen justify-center items-center">
-            Features of this platform
+            <Features />
           </div>
         </div>
         <div className="col-span-6 my-5 items-center ">
