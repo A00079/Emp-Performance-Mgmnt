@@ -6,7 +6,7 @@ const Stats = () => {
   const [value, onChange] = useState(new Date());
 
   return (
-    <div className="grid grid-cols-10 gap-3">
+    <div className="grid grid-cols-10 gap-2">
       <div className="col-span-4 w-full">
 
         <div className='stats-data-container space-y-1 w-full'>

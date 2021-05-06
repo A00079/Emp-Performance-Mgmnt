@@ -5,7 +5,7 @@ import GroupAddIcon from "@material-ui/icons/GroupAdd";
 import ListItemText from "@material-ui/core/ListItemText";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import { Text } from "../../../../../../components";
+import { Text } from "../../../../components";
 import Collapse from '@material-ui/core/Collapse';
 import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -19,12 +19,12 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: theme.spacing(0),
     },
     itemicon: {
-        minWidth: '34px !important'
+        minWidth: '25px !important'
     }
 }));
 
 
-const DynamicListItems = (props) => {
+const DynamicListEmail = (props) => {
     const classes = useStyles();
     const [renderListItems, setRenderListItems] = useState([]);
     useEffect(async () => {
@@ -33,7 +33,7 @@ const DynamicListItems = (props) => {
     }, []);
 
     const setDefaultActiveItem = () => {
-        let element = document.querySelector(`${'#dashboard'}`);
+        let element = document.querySelector(`${'#sent'}`);
         element.classList.add('border-blue-700', 'border-l-4', 'bg-blue-50');
     }
 
@@ -73,25 +73,18 @@ const DynamicListItems = (props) => {
                                 key={index}
                                 id={el.id}
                                 onClick={() => activePanel(el.id)}
-                                className='border-white border-l-4 bg-white hover:border-blue-700 border-l-4 hover:bg-blue-50'
+                                className='border-white h-10 border-l-4 bg-white hover:border-blue-700 border-l-4 hover:bg-blue-50'
                             >
                                 <ListItem button onClick={() => handleListItem(el, el.route)}>
                                     <ListItemIcon className={classes.itemicon}>
-                                        <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
+                                        <div className="bg-gray-200 p-1 rounded -mx-3 sm:-mx-2">
                                             <div dangerouslySetInnerHTML={{ __html: el.itemicon }}></div>
                                         </div>
                                     </ListItemIcon>
                                     <ListItemText>
-                                        <Text
-                                            classes="capitalize"
-                                            size="sm"
-                                            weight="700"
-                                            variant="infoDark"
-                                        >
-                                            {el.itemname}
-                                        </Text>
+                                        <p style={{ fontFamily: 'Nunito' }} className='text-xs font-bold text-gray-500 capitalize'>{el.itemname}</p>
                                     </ListItemText>
-                                    {el.hasdropdown ? el.isexpanded ? <div className='w-6 rounded-full bg-indigo-500 text-white'><ExpandMore /></div> : <div className='w-6 rounded-full bg-blue-200'><ExpandLess /></div> : null}
+                                    {el.hasdropdown ? el.isexpanded ? <ExpandMore className='text-gray-100' /> : <ExpandLess className='text-gray-500' /> : null}
                                 </ListItem>
                             </div>
                             {
@@ -116,7 +109,7 @@ const DynamicListItems = (props) => {
                                                                     weight="800"
                                                                     variant="black"
                                                                 >
-                                                                    {console.log('sub_el',sub_el)}
+                                                                    {console.log('sub_el', sub_el)}
                                                                     {sub_el.item}
                                                                 </Text>
                                                             </ListItemText>
@@ -137,4 +130,4 @@ const DynamicListItems = (props) => {
     )
 }
 
-export default withRouter(DynamicListItems);
+export default withRouter(DynamicListEmail);

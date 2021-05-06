@@ -16,7 +16,7 @@ const CustomProgressBar = (props) => {
                         </span>
                     </div>
                 </div>
-                <div className="overflow-hidden h-2 text-xs flex flex-row rounded-sm bg-gray-200">
+                <div className="overflow-hidden h-2 text-xs flex flex-row rounded-sm bg-gray-300">
                     <div style={{ width: props.width_barone + "%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-400"></div>
                     <div style={{ width: props.width_bartwo + "%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-600"></div>
                     <div style={{ width: props.width_barthree + "%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-900"></div>
