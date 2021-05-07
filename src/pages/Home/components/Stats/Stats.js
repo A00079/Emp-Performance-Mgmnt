@@ -115,12 +115,12 @@ const Stats = () => {
             <div className="col-span-4 w-full">
               <div class="w-full">
                 <div style={{ background: '#F6F6FB' }} class="border border-gray-100 shadow-sm h-full flex items-center  p-2 rounded-lg">
-                  <div class="w-10 h-10 bg-red-300 rounded-md mr-2">
-                    <svg class="w-8 h-8 mx-auto pt-2 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd"></path></svg>
+                  <div class="w-8 h-8 bg-red-300 rounded-md mr-2 mb-5">
+                    <svg class="w-7 h-7 mx-auto pt-1 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd"></path></svg>
                   </div>
                   <div class="ml-1 flex-grow">
                     <p style={{ fontFamily: 'Nunito' }} class="w-10 text-gray-800 text-xs title-font font-extrabold break-words">Total Offers</p>
-                    <p class="text-blue-500 text-sm font-semibold">250</p>
+                    <p class="text-blue-600 text-sm font-semibold">250</p>
                   </div>
                 </div>
               </div>
@@ -128,12 +128,12 @@ const Stats = () => {
             <div className="col-span-4 w-full">
               <div class="w-full">
                 <div style={{ background: '#F6F6FB' }} class="bg-white border border-gray-100 shadow-sm h-full flex items-center p-2 rounded-lg">
-                  <div class="w-10 h-10 bg-green-300 object-cover object-center flex-shrink-0 rounded-md mr-2">
-                    <svg class="w-8 h-8 mx-auto pt-2 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                  <div class="w-8 h-8 bg-green-300 rounded-md mr-2 mb-5">
+                    <svg class="w-7 h-7 mx-auto pt-1 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
                   </div>
                   <div class="ml-1 flex-grow">
                     <h2 style={{ fontFamily: 'Nunito' }} class="w-10 text-gray-800 text-xs title-font font-extrabold break-words">Active Offers</h2>
-                    <p class="text-blue-500 text-sm font-semibold">689</p>
+                    <p class="text-blue-600 text-sm font-semibold">689</p>
                   </div>
                 </div>
               </div>
@@ -141,13 +141,13 @@ const Stats = () => {
             <div className="col-span-4 w-full">
               <div class="w-full">
                 <div style={{ background: '#F6F6FB' }} class="bg-white border border-gray-100 shadow-sm h-full flex items-center p-2 rounded-lg">
-                  <div class="w-10 h-10 bg-yellow-300 object-cover object-center flex-shrink-0 rounded-md mr-2">
-                    <svg class="w-8 h-8 mx-auto pt-2 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                  <div class="w-8 h-8 bg-yellow-300 rounded-md mr-2 mb-5">
+                    <svg class="w-7 h-7 mx-auto pt-1 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
                   </div>
                   <div class="ml-1 flex-grow">
                     <p style={{ fontFamily: 'Nunito' }} class="text-gray-800  text-xs title-font font-extrabold">Pending</p>
                     <p style={{ fontFamily: 'Nunito' }} class="text-gray-800 w-16 text-xs truncate title-font font-extrabold">Applications</p>
-                    <p class="text-blue-500 text-sm font-semibold">689</p>
+                    <p class="text-blue-600 text-sm font-semibold">689</p>
                   </div>
                 </div>
               </div>
@@ -157,12 +157,12 @@ const Stats = () => {
             <div className="col-span-4 w-full">
               <div class="w-full">
                 <div style={{ background: '#F6F6FB' }} class="bg-white border border-gray-100 shadow-sm h-full flex items-center p-2 rounded-lg">
-                  <div class="w-10 h-10 bg-blue-300 object-cover object-center flex-shrink-0 rounded-md mr-2">
-                    <svg class="w-8 h-8 mx-auto pt-2 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path></svg>
+                  <div class="w-8 h-8 bg-blue-300 rounded-md mr-2 mb-5">
+                    <svg class="w-7 h-7 mx-auto pt-1 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path></svg>
                   </div>
                   <div class="ml-1 flex-grow">
                     <h2 style={{ fontFamily: 'Nunito' }} class="w-14 text-gray-800 text-xs title-font font-extrabold break-words">Total Affiliates</h2>
-                    <p class="text-blue-500 text-sm font-semibold">250</p>
+                    <p class="text-blue-600 text-sm font-semibold">250</p>
                   </div>
                 </div>
               </div>
@@ -170,12 +170,12 @@ const Stats = () => {
             <div className="col-span-4 w-full">
               <div class="w-full">
                 <div style={{ background: '#F6F6FB' }} class="bg-white border border-gray-100 shadow-sm h-full flex items-center p-2 rounded-lg">
-                  <div class="w-10 h-10 bg-pink-300 object-cover object-center flex-shrink-0 rounded-md mr-2">
-                    <svg class="w-8 h-8 mx-auto pt-2 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
+                  <div class="w-8 h-8 bg-pink-300 rounded-md mr-2 mb-5">
+                    <svg class="w-7 h-7 mx-auto pt-1 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
                   </div>
                   <div class="ml-1 flex-grow">
                     <h2 style={{ fontFamily: 'Nunito' }} class="text-gray-800 text-xs title-font font-extrabold">Active Affiliates</h2>
-                    <p class="text-blue-500 text-sm font-semibold">689</p>
+                    <p class="text-blue-600 text-sm font-semibold">689</p>
                   </div>
                 </div>
               </div>
@@ -183,12 +183,12 @@ const Stats = () => {
             <div className="col-span-4 w-full">
               <div class="w-full">
                 <div style={{ background: '#F6F6FB' }} class="bg-white border border-gray-100 shadow-sm h-full flex items-center p-2 rounded-lg">
-                  <div class="w-10 h-10 bg-purple-300 object-cover object-center flex-shrink-0 rounded-md mr-2">
-                    <svg class="w-8 h-8 mx-auto pt-2 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 6a3 3 0 11-6 0 3 3 0 016 0zM14 17a6 6 0 00-12 0h12zM13 8a1 1 0 100 2h4a1 1 0 100-2h-4z"></path></svg>
+                  <div class="w-8 h-8 bg-purple-300 rounded-md mr-2 mb-5">
+                    <svg class="w-7 h-7 mx-auto pt-1 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 6a3 3 0 11-6 0 3 3 0 016 0zM14 17a6 6 0 00-12 0h12zM13 8a1 1 0 100 2h4a1 1 0 100-2h-4z"></path></svg>
                   </div>
                   <div class="ml-1 flex-grow">
                     <h2 style={{ fontFamily: 'Nunito' }} class="text-gray-800 text-xs title-font font-extrabold"> Pending Affiliates</h2>
-                    <p class="text-blue-500 text-sm font-semibold">689</p>
+                    <p class="text-blue-600 text-sm font-semibold">689</p>
                   </div>
                 </div>
               </div>
