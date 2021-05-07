@@ -7,7 +7,7 @@ export const textVariant = {
   secondary: `text-gray-900`,
   white: `text-gray-100`,
   black: `text-black`,
-  info: `text-indigo-500`,
+  info: `text-blue-500`,
   infoDark: `text-indigo-700`,
   danger: `text-red-600`,
   blue: `text-blue-700`,

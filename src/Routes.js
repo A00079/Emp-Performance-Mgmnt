@@ -17,6 +17,7 @@ import {
 } from "react-device-detect";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import CreateOffer from "./pages/CreateOffer";
 const Routes = () => {
   return (
     <Router>
@@ -44,6 +45,12 @@ const Routes = () => {
           path="/demo-graphics"
           layout={PublicLayout}
           component={DemoGraphics}
+        />
+        <WithLayoutRoute
+          exact
+          path="/create-offer"
+          layout={PublicLayout}
+          component={CreateOffer}
         />
         <WithLayoutRoute
           exact
