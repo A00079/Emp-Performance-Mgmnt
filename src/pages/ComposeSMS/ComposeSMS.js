@@ -27,10 +27,14 @@ const ComposeSms = () => {
     ]);
 
     const [ActiveWindow, setActiveWindow] = useState('sendsms');
-
+    const [smsMessage, setSmsMessage] = useState('');
     const handleListItemClick = (data) => {
         console.log('Call Received...', data);
         setActiveWindow(data);
+    }
+    const handleSmsMessage = (data) => {
+        console.log('Message Received...', data);
+        setSmsMessage(data);
     }
 
     return (
@@ -88,7 +92,7 @@ const ComposeSms = () => {
                                 </div>
                             </div>
                             <div className='parent-main-form-container w-full'>
-                                <SmsForm />
+                                <SmsForm smsFuncProvider={(val) => handleSmsMessage(val)} />
                             </div>
                         </div>
                     </div>
@@ -101,7 +105,64 @@ const ComposeSms = () => {
                                 <p style={{ fontFamily: 'Nunito' }} className='text-xs text-gray-500 font-bold'>Below are the inbox data and are live updated</p>
                             </div>
                         </div>
-                        body
+                        <div className='w-full border-b border-gray-200'>
+                            <div className='flex flex-col w-full mx-4 py-3'>
+                                <p style={{ fontFamily: 'Nunito' }} className='text-sm text-gray-500 font-medium'>Mobile Preview</p>
+                            </div>
+                        </div>
+                        <div className="mobile-preview mx-40 py-5">
+                            <div className='mobile-container bg-white flex flex-col border border-gray-300 rounded-lg'>
+                                <div className='status-bar px-2 border-b border-gray-300 py-1 flex flex-row justify-between items-center '>
+                                    <div className='network-sign'>
+                                        <small className='text-xs text-gray-700 font-semibold'>JIO</small>
+                                    </div>
+                                    <div className='network-sign flex flex-row justify-between items-center space-x-1'>
+                                        <small className='text-xs text-gray-600 font-medium'>
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path></svg>
+                                        </small>
+                                        <div className='network-no'>
+                                            <small className='text-xs text-gray-700 font-semibold'>4G</small>
+                                        </div>
+                                        <small className='text-xs text-gray-600 font-medium'>
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path></svg>
+                                        </small>
+                                        <small className='text-xs text-gray-600 font-medium'>
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div className='py-2 border-b border-gray-300'>
+                                    <div className='flex flex-row justify-start items-center'>
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2.94 6.412A2 2 0 002 8.108V16a2 2 0 002 2h12a2 2 0 002-2V8.108a2 2 0 00-.94-1.696l-6-3.75a2 2 0 00-2.12 0l-6 3.75zm2.615 2.423a1 1 0 10-1.11 1.664l5 3.333a1 1 0 001.11 0l5-3.333a1 1 0 00-1.11-1.664L10 11.798 5.555 8.835z" clip-rule="evenodd"></path></svg>
+                                        <p className='text-sm text-gray-500 font-extrabold px-2'>AZ-000567</p>
+                                    </div>
+                                </div>
+                                <div className='mobile-msg-body h-72'>
+                                    <div className='space-y-3'>
+                                        <p className='text-xs text-center mt-3 text-gray-500 font-medium'>07/05/2021 Fri</p>
+                                        <div class="p-2 w-full flex">
+                                            <div class="w-12 h-12 inline-flex items-center justify-center rounded-md bg-gray-200 text-indigo-500 mb-4 flex-shrink-0">
+                                                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
+                                            </div>
+                                            <div class="flex-grow pl-0 mt-3">
+                                                <p class="mx-4 text-xs text-gray-700 font-medium rounded-md text-base bg-gray-100 p-2">
+                                                    {smsMessage}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='mobile-footer-menu border-t border-gray-300 mt-20'>
+                                    <div className='flex flex-row justify-between  items-center mx-7 py-2'>
+                                        <p className='bg-gray-500 w-3 h-3 rounded-full'></p>
+                                        <p className='bg-gray-500 w-3 h-3 rounded-sm'></p>
+                                        <p>
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

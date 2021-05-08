@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
-const SmsForm = () => {
+const SmsForm = (props) => {
     return (
         <React.Fragment>
             <div className='msg-main-container flex flex-col w-full py-2 px-4 space-y-2'>
@@ -40,6 +40,7 @@ const SmsForm = () => {
                         </div>
                     </div> */}
                     <TextField
+                        onChange={(e) => props.smsFuncProvider(e.target.value)}
                         className='w-full'
                         id="outlined-multiline-static"
                         label="SMS"
