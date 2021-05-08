@@ -1,5 +1,6 @@
 import React from "react";
 import CSVReader from "react-csv-reader";
+import { ComposeForm } from '../../components';
 import './bulkstyle.css';
 
 const handleForce = (data, fileInfo) => console.log(data, fileInfo);
@@ -13,9 +14,10 @@ const papaparseOptions = {
 
 const BulkEmail = () => {
     return (
-        <div className="bulk-container">
+        <div className="bulk-container cursor-pointer">
+            <ComposeForm title="Bulk Message" messageBodyHeight={3} />
             <CSVReader cssClass="react-csv-input"
-                label="Select CSV with secret Death Star statistics"
+                label=""
                 onFileLoaded={handleForce}
                 parserOptions={papaparseOptions}
             />

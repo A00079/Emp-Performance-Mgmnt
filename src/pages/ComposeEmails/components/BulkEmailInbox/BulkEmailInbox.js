@@ -3,14 +3,25 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
+import Skeleton from '@material-ui/lab/Skeleton';
+import CSVReader from "react-csv-reader";
 
+const handleForce = (data, fileInfo) => console.log(data, fileInfo);
+
+const papaparseOptions = {
+    header: true,
+    dynamicTyping: true,
+    skipEmptyLines: true,
+    transformHeader: header => header.toLowerCase().replace(/\W/g, "_")
+};
 const useStyles = makeStyles(() => ({
     noBorder: {
         border: "none",
     },
 }));
 
-const ComposeForm = (props) => {
+
+const BulkEmailInbox = (props) => {
     const classes = useStyles();
     return (
         <React.Fragment>
@@ -59,24 +70,25 @@ const ComposeForm = (props) => {
                     </div>
                 </div>
                 <div className='mx-10'>
-                    <TextField
-                        id="outlined-multiline-static"
-                        label="Body"
-                        multiline
-                        rows={props.messageBodyHeight}
-                        placeholder="Body"
-                        className='w-full'
-                        variant="outlined"
-                    />
+                    <Skeleton variant="rect" className='w-full' height={props.bodyHeight} />
                 </div>
                 <div className='mx-10'>
                     <Button variant="contained" color="primary">
                         Send &nbsp;<SendIcon />
                     </Button>
+                    {
+                        props.isBulkMail ? <div className="bulk-container cursor-pointer">
+                            <CSVReader cssClass="react-csv-input"
+                                label=""
+                                onFileLoaded={handleForce}
+                                parserOptions={papaparseOptions}
+                            />
+                        </div> : null
+                    }
                 </div>
             </section>
         </React.Fragment>
     )
 }
 
-export default ComposeForm;
+export default BulkEmailInbox;

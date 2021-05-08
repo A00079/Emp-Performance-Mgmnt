@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import { Card, Text } from "../../../../components";
-import DatePicker from "react-date-picker";
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 const Stats = () => {
-  const [value, onChange] = useState(new Date());
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
   return (
     <div className="grid grid-cols-10 gap-2">
@@ -14,18 +24,34 @@ const Stats = () => {
             <div className='w-full'>
               <div class="w-full">
                 <div class="h-full flex items-center p-2">
-                  <div class="w-12 h-12 bg-gray-100 object-cover object-center flex-shrink-0 rounded-md mr-3">
-                    <svg class="w-7 h-7 text-center text-indigo-600 mx-auto mt-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path></svg>
+                  <div class="w-10 h-10 bg-gray-100 object-cover object-center flex-shrink-0 rounded-md mr-2">
+                    <svg class="w-6 h-6 text-center text-indigo-600 mx-auto mt-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path></svg>
                   </div>
                   <div class="flex-grow">
-                    <div className='flex flex-row justify-between'>
+                    <div className='flex flex-row justify-between items-center'>
                       <div>
-                        <p class="text-gray-600 text-sm title-font font-bold">Showing Data For <sup style={{ padding: '0.2rem' }} className='bg-yellow-300 text-white rounded-sm'>Today</sup></p>
-                        <small class="text-gray-500">Below are the updated statistics.</small>
+                        <p class="text-gray-600 text-sm title-font font-bold">Total Stats <sup style={{ padding: '0.2rem' }} className='bg-yellow-300 text-white rounded-sm'>Today</sup></p>
+                        <small class="text-gray-500">Below are the updated stats.</small>
                       </div>
+                      {/* <MuiPickersUtilsProvider utils={DateFnsUtils} className='w-20'>
+                        <KeyboardDatePicker
+                          className='w-20 text-xs h-0'
+                          disableToolbar
+                          variant="inline"
+                          format="MM/dd/yyyy"
+                          margin="normal"
+                          id="date-picker-inline"
+                          label="Date"
+                          value={selectedDate}
+                          onChange={handleDateChange}
+                          KeyboardButtonProps={{
+                            'aria-label': 'change date',
+                          }}
+                        />
+                      </MuiPickersUtilsProvider> */}
                       <div class="relative inline-block text-left">
                         <div>
-                          <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-2 py-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                          <button type="button" class="inline-flex justify-center w-20 h-8 rounded-md border border-gray-300 shadow-sm px-2 py-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
                             Today
                 <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                               <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -110,7 +136,7 @@ const Stats = () => {
         </div>
       </div>
       <div className="col-span-4 w-full">
-        <div className='overalldata-main-container bg-white rounded-md border border-gray-200 w-full flex flex-col py-3 space-y-2 px-2'>
+        <div className='overalldata-main-container bg-white rounded-md border border-gray-200 w-full flex flex-col py-2 space-y-2 px-2'>
           <div className='w-full grid grid-cols-12 gap-2'>
             <div className="col-span-4 w-full">
               <div class="w-full">

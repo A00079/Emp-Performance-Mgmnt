@@ -8,6 +8,7 @@ import { PublicLayout, SecondaryPublicLayout } from "./layouts";
 import Home from "./pages/Home";
 import DemoGraphics from "./pages/DemoGraphics";
 import ComposeEmails from "./pages/ComposeEmails";
+import ComposeSms from "./pages/ComposeSMS";
 
 import {
   BrowserView,
@@ -50,6 +51,12 @@ const Routes = () => {
           path="/compose-email"
           layout={PublicLayout}
           component={ComposeEmails}
+        />
+        <WithLayoutRoute
+          exact
+          path="/compose-sms"
+          layout={PublicLayout}
+          component={ComposeSms}
         />
         <Route path="*" component={() => "404 NOT FOUND"} />
       </Switch>
