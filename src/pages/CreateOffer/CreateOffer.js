@@ -128,17 +128,19 @@ const CreateOffer = () => {
                 />
               </div>
             </div>
-            <div>
+            <div className="w-full">
               <div className="py-2">
                 <Text>Select offer start date and end date</Text>
               </div>
-              <DateRange
-                direction="hotizontal"
-                months={2}
-                date
-                ranges={[selectionRange]}
-                onChange={handleSelect}
-              />
+              <div className="flex">
+                <DateRange
+                  direction="hotizontal"
+                  months={2}
+                  date
+                  ranges={[selectionRange]}
+                  onChange={handleSelect}
+                />
+              </div>
             </div>
             <div>
               <DropDown
@@ -150,7 +152,7 @@ const CreateOffer = () => {
           </div>
         </div>
         <div className="p-4 col-span-2">
-          <ImageField />
+          <ImageField label="select company logo" />
         </div>
       </div>
     </div>
