@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { DropDown, ImageField, TextBox, Text } from "../../components";
+import { DropDown, ImageField, TextBox, Text, Button } from "../../components";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import { COLORS } from "../../theme/mainTheme";
 
 const CreateOffer = () => {
   const [input, setInput] = useState({});
@@ -18,8 +19,8 @@ const CreateOffer = () => {
   };
 
   const selectionRange = {
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: dateRange.startDate,
+    endDate: dateRange.endDate,
     key: "selection",
   };
 
@@ -37,9 +38,10 @@ const CreateOffer = () => {
   ];
 
   const handleSelect = (e) => {
+    console.log(e.selection);
     setDateRange({
       startDate: e.selection.startDate,
-      endDate: e.selection.startDate,
+      endDate: e.selection.endDate,
     });
   };
 
@@ -132,15 +134,13 @@ const CreateOffer = () => {
               <div className="py-2">
                 <Text>Select offer start date and end date</Text>
               </div>
-              <div className="flex">
-                <DateRange
-                  direction="hotizontal"
-                  months={2}
-                  date
-                  ranges={[selectionRange]}
-                  onChange={handleSelect}
-                />
-              </div>
+              <DateRange
+                rangeColors={[`${COLORS.primary}`]}
+                direction="hotizontal"
+                months={2}
+                ranges={[selectionRange]}
+                onChange={handleSelect}
+              />
             </div>
             <div>
               <DropDown
@@ -149,10 +149,20 @@ const CreateOffer = () => {
                 label="Offer Visibility"
               />
             </div>
+            <div>
+              <Button
+                color="primary"
+                variant="primary200"
+                size="lg"
+                isDisable={false}
+              >
+                Create Offer
+              </Button>
+            </div>
           </div>
         </div>
         <div className="p-4 col-span-2">
-          <ImageField label="select company logo" />
+          <ImageField label="select offer logo" />
         </div>
       </div>
     </div>

@@ -78,12 +78,12 @@ const ImageField = ({ label }) => {
 
       <label
         htmlFor="input"
-        className="w-full cursor-pointer text-center inline-block p-2 border-2 border-dashed"
+        className="cursor-pointer w-full text-center inline-block p-2 border-2 border-dashed"
       >
         <Text>{label}</Text>
       </label>
       <div className="relative">
-        <img src={imagePreview} className="mx-auto" width="200px"/>
+        <img src={imagePreview} className="mx-auto" width="200px" />
         {imagePreview !== null && (
           <div
             className="absolute left-0 right-0 p-1.5 cursor-pointer bg-red-400 text-center"
