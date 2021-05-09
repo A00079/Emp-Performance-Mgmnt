@@ -102,7 +102,9 @@ const AllOffers = () => {
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <div className="flex justify-center">
+        <Pagination setCurrentPage={(p) => console.log(p)} />
+      </div>
     </div>
   );
 };
