@@ -11,7 +11,7 @@ const CustomProgressBar = (props) => {
                         </span>
                     </div>
                     <div className="text-left">
-                        <span className="text-sm font-bold inline-block text-indigo-600">
+                        <span className="text-sm font-bold inline-block text-blue-700">
                             {props.prog_no}
                         </span>
                     </div>

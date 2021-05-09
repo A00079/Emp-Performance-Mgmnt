@@ -37,27 +37,31 @@ const DynamicListEmail = (props) => {
   };
 
   const activePanel = (item) => {
-    let listItems = document.getElementById("drawer-item-container");
-    let element = document.querySelector(`${"#" + item}`);
+    let listItems = document.getElementById('drawer-item-container-email');
+    let template_listItems = document.getElementById('template-item-container');
+    let element = document.querySelector(`${'#' + item}`);
+    let template_element = document.querySelector(`${'#' + item}`);
 
-    listItems.childNodes.forEach((el, index) => {
-      el.classList.remove("border-blue-700", "border-l-4", "bg-blue-50");
-      el.classList.add(
-        "border-white",
-        "border-l-4",
-        "bg-white",
-        "hover:border-blue-700",
-        "border-l-4",
-        "hover:bg-blue-50"
-      );
-    });
-    element.classList.add("border-blue-700", "border-l-4", "bg-blue-50");
+    if (item.includes('template')) {
+      template_listItems.childNodes.forEach((el, index) => {
+        el.classList.remove('border-blue-700', 'border-l-4', 'bg-blue-50');
+        el.classList.add('border-white', 'border-l-4', 'bg-white', 'hover:border-blue-700', 'border-l-4', 'hover:bg-blue-50');
+      })
+      template_element.classList.add('border-blue-700', 'border-l-4', 'bg-blue-50');
+    } else {
+      listItems.childNodes.forEach((el, index) => {
+        el.classList.remove('border-blue-700', 'border-l-4', 'bg-blue-50');
+        el.classList.add('border-white', 'border-l-4', 'bg-white', 'hover:border-blue-700', 'border-l-4', 'hover:bg-blue-50');
+      })
+      element.classList.add('border-blue-700', 'border-l-4', 'bg-blue-50');
+    }
     // handleDrawerOpen();
   };
   const handleListItem = (item, itemroute) => {
     if (!!itemroute) {
       props.history.push(itemroute);
-    } else {
+    } else if (item.id == 'quickmail' || item.id == 'sent' || item.id == 'bulkmail' || item.id == 'template-quickmail' || item.id == 'template-bulkmail') {
+      props.funcProvider(item.id);
       renderListItems.map((el_list, index) => {
         if (el_list.id === item.id && item.isexpanded) {
           el_list.isexpanded = false;

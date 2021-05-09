@@ -103,9 +103,9 @@ const DynamicListItems = (props) => {
                                                     return (
                                                         <ListItem key={sub_index} button className={classes.nested} onClick={() => handleListItem(el, sub_el.route)}>
                                                             <ListItemIcon className={classes.itemicon}>
-                                                                <div className="bg-indigo-100 p-0 rounded ">
+                                                                <div className="bg-indigo-200 p-0 rounded ">
                                                                     <LabelIcon
-                                                                        className='text-green-700'
+                                                                        className='text-indigo-700'
                                                                     />
                                                                 </div>
                                                             </ListItemIcon>
