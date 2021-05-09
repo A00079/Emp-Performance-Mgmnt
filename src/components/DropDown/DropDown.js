@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { COLORS } from "../../theme/mainTheme";
 import Text from "../Text/Text";
 
 const DropDown = ({ label, options, setDropDownOption, def }) => {
@@ -36,14 +37,14 @@ const DropDown = ({ label, options, setDropDownOption, def }) => {
       <ul
         class={`${
           list ? "block" : "hidden"
-        } w-full absolute bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
+        } w-full absolute bg-white border-l border-r border-b rounded-sm transform scale-0 group-hover:scale-100 absolute 
                   transition duration-150 ease-in-out origin-top min-w-32 z-20`}
       >
         {options.map((el, index) => (
           <li
             onClick={() => handleOptionSelection(el)}
             key={index}
-            class="rounded-sm px-3 py-1 hover:bg-gray-100 cursor-pointer"
+            class={`rounded-sm px-3 py-1 hover:bg-blue-50 cursor-pointer`}
           >
             <Text variant="primary" size="sm" classes="capitalize">
               {el}

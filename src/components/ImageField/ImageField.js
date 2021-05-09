@@ -2,9 +2,9 @@ import React from "react";
 import Compress from "browser-image-compression";
 import Text from "../Text";
 
-const ImageField = () => {
+const ImageField = ({ label }) => {
   const [image, setImage] = React.useState("");
-  const [imagePreview, setImagePreview] = React.useState("");
+  const [imagePreview, setImagePreview] = React.useState(null);
   const [imagePreviewLoading, setimagePreviewLoading] = React.useState(false);
 
   const onFileChange = (event) => {
@@ -78,13 +78,13 @@ const ImageField = () => {
 
       <label
         htmlFor="input"
-        className="w-full text-center inline-block p-2 border-2 border-dashed"
+        className="cursor-pointer w-full text-center inline-block p-2 border-2 border-dashed"
       >
-        <Text>{imagePreview ? "Change Logo" : "Select company logo"}</Text>
+        <Text>{label}</Text>
       </label>
       <div className="relative">
         <img src={imagePreview} />
-        {imagePreview !== "" && (
+        {imagePreview !== null && (
           <div
             className="absolute left-0 right-0 p-1.5 cursor-pointer bg-red-400 text-center"
             onClick={() => setImagePreview(null)}
