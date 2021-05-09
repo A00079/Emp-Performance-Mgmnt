@@ -16,13 +16,8 @@
     "axios": "^0.21.1",
     "britecharts-react": "^0.6.5",
     "browser-image-compression": "^1.0.14",
-<<<<<<< HEAD
-    "date-fns": "^2.21.2",
-    "firebase": "^8.5.0",
-=======
     "date-fns": "^2.0.0-beta.5",
     "firebase": "^8.3.0",
->>>>>>> feature-email
     "history": "^5.0.0",
     "lodash": "^4.17.21",
     "node-sass": "^5.0.0",
