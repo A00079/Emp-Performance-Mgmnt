@@ -196,7 +196,10 @@ const MiniDrawer = (props) => {
       itemname: "offers",
       hasdropdown: true,
       isexpanded: false,
-      subitemlist: [{ item: "Create Offer", route: "/create-offer" }, { item: "All Offers", route: "/All-Offers" }],
+      subitemlist: [
+        { item: "Create Offer", route: "/create-offer" },
+        { item: "All Offers", route: "/All-Offers" },
+      ],
       // route: "/offers",
       itemicon:
         '<svg class="w-4 h-4 text-purple-800 text-bold" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"></path></svg>',
@@ -263,11 +266,12 @@ const MiniDrawer = (props) => {
       route: false,
       subitemlist: [
         {
-          'item': 'Compose sms',
-          'route': '/compose-sms'
-        }
+          item: "Compose sms",
+          route: "/compose-sms",
+        },
       ],
-      itemicon: '<svg class="w-4 h-4 text-purple-800 text-bold" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"></path></svg>'
+      itemicon:
+        '<svg class="w-4 h-4 text-purple-800 text-bold" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"></path></svg>',
     },
     {
       id: "settings",

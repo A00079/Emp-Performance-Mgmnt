@@ -9,17 +9,6 @@
   --primary300: #004789;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-body {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
 li > ul {
   transform: translatex(100%) scale(0);
 }
@@ -188,4 +177,17 @@ label {
   > ul
   > li {
   outline: none;
+}
+
+/* ===================table styles======================= */
+
+table th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+th {
+  background-color: var(--primary);
+  color: #fff;
 }
