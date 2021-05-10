@@ -15,12 +15,9 @@ const TableOptions = () => {
           <Searchbar placeHolder="Search..." />
         </div>
         <div className="w-96">
-          <Text variant="primary" size="xs">
-            Sort by
-          </Text>
           <DropDown
-            def="Offer Name"
-            options={["Category", "GEO", "Revenue", "Payout"]}
+            label="Sort By"
+            options={["Offer Name", "Category", "GEO", "Revenue", "Payout"]}
           />
         </div>
       </div>

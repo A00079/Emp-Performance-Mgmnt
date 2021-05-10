@@ -23,7 +23,7 @@ const TextBox = ({
       <div
         className={`${
           orientation === "vertical" && "grid"
-        } flex items-center mt-2 ${!orientation && "space-x-1.5"}`}
+        } flex items-center  ${!orientation && "space-x-1.5"}`}
       >
         {label && (
           <label>

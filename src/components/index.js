@@ -5,3 +5,5 @@ export { default as TextBox } from "./TextBox";
 export { default as ImageField } from "./ImageField";
 export { default as Button } from "./Button";
 export { default as Searchbar } from "./Searchbar";
+export { default as CustomDialog } from "./CustomDialog";
+export { default as Pagination } from "./Pagination";

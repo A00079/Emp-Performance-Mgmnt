@@ -20,6 +20,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import CreateOffer from "./pages/CreateOffer";
 import AllOffers from "./pages/AllOffers";
+import Reports from "./pages/Reports";
 const Routes = () => {
   return (
     <Router>
@@ -53,6 +54,12 @@ const Routes = () => {
           path="/create-offer"
           layout={PublicLayout}
           component={CreateOffer}
+        />
+        <WithLayoutRoute
+          exact
+          path="/reports"
+          layout={PublicLayout}
+          component={Reports}
         />
         <WithLayoutRoute
           exact

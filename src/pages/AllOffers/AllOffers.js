@@ -1,7 +1,7 @@
 import React from "react";
-import { Text } from "../../components";
+import { Text, Pagination } from "../../components";
 import { COLORS } from "../../theme/mainTheme";
-import { Pagination, TableOptions } from "./components";
+import { TableOptions } from "./components";
 
 const AllOffers = () => {
   return (
@@ -45,7 +45,7 @@ const AllOffers = () => {
           </thead>
           <tbody className="border ">
             {[...new Array(20)].map((el, index) => (
-              <tr className={index % 2 === 0 && `bg-blue-50` }>
+              <tr className={index % 2 === 0 && `bg-blue-50`}>
                 <td className="p-2">
                   <img src="/img/offer-logo.jpg" width="120" />
                 </td>
@@ -107,7 +107,7 @@ const AllOffers = () => {
           </tbody>
         </table>
       </div>
-      <div className="flex justify-center">
+      <div className="">
         <Pagination setCurrentPage={(p) => console.log(p)} />
       </div>
     </div>

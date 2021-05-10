@@ -9,7 +9,7 @@ const Pagination = ({ setCurrentPage }) => {
   };
 
   return (
-    <div>
+    <div className="flex justify-center py-4">
       <Page
         onChange={handleCurrentPage}
         page={page}

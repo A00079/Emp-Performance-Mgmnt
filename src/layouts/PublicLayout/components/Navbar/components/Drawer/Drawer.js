@@ -24,10 +24,60 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Avatar, CustomDropDown, DynamicListItems } from "../../components";
 import HistoryIcon from "@material-ui/icons/History";
-import Button from "@material-ui/core/Button";
-import { Text } from "../../../../../../components";
+import {
+  Text,
+  Button,
+  CustomDialog,
+  DropDown,
+  TextBox,
+} from "../../../../../../components";
 import { connect } from "react-redux";
 import { drawerState } from "../../../../../../store/actions";
+
+const Compo = () => {
+  return (
+    <div className="">
+      <div className="mt-8 ml-8">
+        <Text size="xl" variant="blue">
+          Add Conversions
+        </Text>
+      </div>
+      <div className="py-40 flex justify-center space-x-4 items-center">
+        <div>
+          <DropDown
+            label="select offer"
+            options={[
+              "motilal",
+              "motilal",
+              "motilal",
+              "motilal",
+              "motilal",
+              "motilal",
+              "motilal",
+            ]}
+          />
+        </div>
+        <div>
+          <DropDown
+            label="select Publisher"
+            options={[
+              "motilal",
+              "motilal",
+              "motilal",
+              "motilal",
+              "motilal",
+              "motilal",
+              "motilal",
+            ]}
+          />
+        </div>
+        <div>
+          <TextBox placeHolder="Conversion" />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -87,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "hidden",
     width: theme.spacing(7) + 1,
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9) + 1,
+      width: theme.spacing(6.3) + 1,
     },
   },
   toolbar: {
@@ -180,6 +230,7 @@ const MiniDrawer = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const [isConversionOpen, setConversionOpen] = React.useState(false);
   const [listData, setListData] = React.useState([
     {
       id: "dashboard",
@@ -600,30 +651,28 @@ const MiniDrawer = (props) => {
         </div>
         <Divider />
         <List className="bg-blue-50">
-          <ListItem className="bg-green-50">
+          <ListItem>
             {open ? (
-              <div className="w-full">
-                <div className="h-full flex flex-row justify-start items-center rounded-lg">
-                  <Avatar />
-                  <div className="flex-grow">
-                    <div className="flex flex-row justify-start items-center">
-                      <h2 className="text-blue-800 title-font font-bold">
-                        Clerk Kent
-                      </h2>
-                      <img
-                        src="/img/checkmark.png"
-                        className="ml-1 object-contain object-cover w-4 h-4"
-                      />
-                    </div>
-                    <p className="text-gray-600 font-medium text-xs">
-                      clerkkent@gmail.com
-                    </p>
-                  </div>
+              <div
+                onClick={() => setConversionOpen(true)}
+                className="cursor-pointer flex space-x-2 items-center w-full justify-center bg-blue-100 p-4"
+              >
+                <div>
+                  <Text size="xl2" variant="blue" weight="700">
+                    +
+                  </Text>
+                </div>
+                <div>
+                  <Text variant="blue" weight="700" size="md">
+                    Add Conversions
+                  </Text>
                 </div>
               </div>
             ) : (
-              <div className="-mx-4 sm:-mx-2 p-0">
-                <Avatar />
+              <div className="cursor-pointer -ml-1 bg-blue-100 p-2">
+                <Text size="xl2" variant="blue" weight="700">
+                  +
+                </Text>
               </div>
             )}
           </ListItem>
@@ -637,6 +686,17 @@ const MiniDrawer = (props) => {
           <DynamicListItems itemsData={listData} open={open} />
         </List>
       </Drawer>
+      <div>
+        <CustomDialog
+          isFullScreen={false}
+          isOpen={isConversionOpen}
+          DialogComponent={Compo}
+          size="sm"
+          isBtn={false}
+          fullWidth={true}
+          setOpen={(val) => setConversionOpen(val)}
+        />
+      </div>
     </div>
   );
 };
