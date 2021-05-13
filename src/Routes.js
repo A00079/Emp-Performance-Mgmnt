@@ -21,6 +21,7 @@ import Login from "./pages/Login";
 import CreateOffer from "./pages/CreateOffer";
 import AllOffers from "./pages/AllOffers";
 import Reports from "./pages/Reports";
+import AddEmployee from "./pages/AddEmployee";
 const Routes = () => {
   return (
     <Router>
@@ -54,6 +55,12 @@ const Routes = () => {
           path="/create-offer"
           layout={PublicLayout}
           component={CreateOffer}
+        />
+        <WithLayoutRoute
+          exact
+          path="/add-employee"
+          layout={PublicLayout}
+          component={AddEmployee}
         />
         <WithLayoutRoute
           exact
