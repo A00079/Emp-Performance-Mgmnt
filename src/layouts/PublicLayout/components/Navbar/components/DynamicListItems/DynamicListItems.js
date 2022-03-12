@@ -82,16 +82,19 @@ const DynamicListItems = (props) => {
                                         </div>
                                     </ListItemIcon>
                                     <ListItemText>
-                                        <Text
-                                            classes="capitalize"
-                                            size="sm"
-                                            weight="700"
-                                            variant="infoDark"
-                                        >
-                                            {el.itemname}
-                                        </Text>
+                                        {
+                                            props.open ?
+                                                <Text
+                                                    classes="capitalize"
+                                                    size="sm"
+                                                    weight="700"
+                                                    variant="infoDark"
+                                                >
+                                                    {el.itemname}
+                                                </Text> : ""
+                                        }
                                     </ListItemText>
-                                    {el.hasdropdown ? el.isexpanded ? <div className='w-6 rounded-full bg-indigo-500 text-white'><ExpandMore /></div> : <div className='w-6 rounded-full bg-blue-200'><ExpandLess /></div> : null}
+                                    {el.hasdropdown && props.open ? el.isexpanded ? <div className='w-6 rounded-full bg-indigo-500 text-white'><ExpandMore /></div> : <div className='w-6 rounded-full bg-blue-200'><ExpandLess /></div> : null}
                                 </ListItem>
                             </div>
                             {
@@ -116,7 +119,7 @@ const DynamicListItems = (props) => {
                                                                     weight="800"
                                                                     variant="black"
                                                                 >
-                                                                    {console.log('sub_el',sub_el)}
+                                                                    {console.log('sub_el', sub_el)}
                                                                     {sub_el.item}
                                                                 </Text>
                                                             </ListItemText>

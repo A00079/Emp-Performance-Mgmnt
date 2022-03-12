@@ -209,6 +209,34 @@ const MiniDrawer = (props) => {
       itemicon: '<svg class="w-4 h-4 text-purple-800 text-bold" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>'
     },
     {
+      id: "creditbuddy",
+      itemname: "credit buddy",
+      hasdropdown: true,
+      isexpanded: false,
+      route: false,
+      subitemlist: [
+        {
+          'item': 'User Logs',
+          'route': '/creditbuddy-user-logs'
+        },
+      ],
+      itemicon: '<svg class="w-4 h-4 text-purple-800 text-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg>'
+    },
+    {
+      id: "dcscomputerclasses",
+      itemname: "DCS Classes",
+      hasdropdown: true,
+      isexpanded: false,
+      route: false,
+      subitemlist: [
+        {
+          'item': 'User Registration Logs',
+          'route': '/dcs-user-registration-logs'
+        },
+      ],
+      itemicon: '<svg class="w-4 h-4 text-purple-800 text-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg>'
+    },
+    {
       id: "manageemployees",
       itemname: "manage employee",
       hasdropdown: true,
@@ -273,7 +301,7 @@ const MiniDrawer = (props) => {
       hasdropdown: false,
       isexpanded: false,
       subitemlist: [],
-      route: '/logout',
+      route: '/Login',
       itemicon: '<svg class="w-4 h-4 text-purple-800 text-bold" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path></svg>'
     },
   ]);
@@ -453,7 +481,7 @@ const MiniDrawer = (props) => {
                 ""
               ) : (
                 <img
-                  src="./img/brandlogo.png"
+                  src="/img/dashboard-logo.png"
                   className="hidden sm:block object-contain object-fit w-12 h-12 py-2 -mx-3"
                 />
               )}
@@ -498,7 +526,7 @@ const MiniDrawer = (props) => {
               />
             </div>
             <div className={classes.grow} />
-            <Button
+            {/* <Button
               variant="contained"
               size="small"
               style={{ backgroundColor: "#068F38", marginRight: "10px" }}
@@ -509,7 +537,7 @@ const MiniDrawer = (props) => {
                   View History
                 </small>
               </div>
-            </Button>
+            </Button> */}
             <div className={classes.sectionDesktop}>
               <div className="border-gray-100 border-l-2 border-r-2 mt-2">
                 <IconButton
@@ -567,11 +595,14 @@ const MiniDrawer = (props) => {
         }}
       >
         <div className={classes.toolbar}>
-          <div className="pl-4">
+          <div className="pl-4 flex flex-row justify-between items-center">
             <img
-              src="http://adsrevenue.co/img/final-logo.png"
-              className="mx-auto object-contain object-fit w-40 h-8"
+              src="/img/dashboard-logo.png"
+              className="mx-auto object-contain object-fit w-60 h-10"
             />
+            <Text variant="infoDark" weight="700">
+              AdsRevenue
+            </Text>
           </div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -599,7 +630,7 @@ const MiniDrawer = (props) => {
                       />
                     </div>
                     <p className="text-gray-600 font-medium text-xs">
-                      clerkkent@gmail.com
+                      {window.sessionStorage.getItem('useremail')}
                     </p>
                   </div>
                 </div>

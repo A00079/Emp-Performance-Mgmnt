@@ -8,6 +8,8 @@ import { PublicLayout, SecondaryPublicLayout } from "./layouts";
 import Home from "./pages/Home";
 import DemoGraphics from "./pages/DemoGraphics";
 import ComposeEmails from "./pages/ComposeEmails";
+import CBUserLogs from "./pages/CreditBuddyUserLogs";
+import DCSUserRegistrationLogs from "./pages/DCSUserRegistrationLogs/DCSUserRegistrationLogs";
 
 import {
   BrowserView,
@@ -50,6 +52,18 @@ const Routes = () => {
           path="/compose-email"
           layout={PublicLayout}
           component={ComposeEmails}
+        />
+        <WithLayoutRoute
+          exact
+          path="/creditbuddy-user-logs"
+          layout={PublicLayout}
+          component={CBUserLogs}
+        />
+        <WithLayoutRoute
+          exact
+          path="/dcs-user-registration-logs"
+          layout={PublicLayout}
+          component={DCSUserRegistrationLogs}
         />
         <Route path="*" component={() => "404 NOT FOUND"} />
       </Switch>
