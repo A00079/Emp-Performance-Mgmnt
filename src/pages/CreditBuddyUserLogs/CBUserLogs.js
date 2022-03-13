@@ -14,7 +14,7 @@ function CBUserLogs() {
     }, []);
 
     const fetchData = () => {
-        axios.get('http://credit.candidleads.com/api/v1/details/getDetails')
+        axios.get('https://credit.candidleads.com/api/v1/details/getDetails')
             .then((res) => {
                 setDataCBData(res.data.result);
             })
