@@ -34,7 +34,9 @@ const DynamicListItems = (props) => {
 
     const setDefaultActiveItem = () => {
         let element = document.querySelector(`${'#dashboard'}`);
-        element.classList.add('border-blue-700', 'border-l-4', 'bg-blue-50');
+        if(!!element){
+            element.classList.add('border-blue-700', 'border-l-4', 'bg-blue-50');
+        }
     }
 
     const activePanel = (item) => {

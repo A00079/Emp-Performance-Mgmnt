@@ -1,9 +1,16 @@
 import { Navbar, Footer } from "./components";
 import { history } from "../../utils";
 import { connect } from "react-redux";
+import { useEffect } from "react";
+import { withRouter } from "react-router-dom";
 
 function PublicLayout(props) {
   console.log(props.isOpen);
+  useEffect(() => {
+    if (!window.sessionStorage.getItem('useremail')) {
+      props.history.push('/Login');
+    }
+  })
   const { children, withFooter = true } = props;
   return (
     <div>
@@ -22,4 +29,4 @@ const mapDispatchToProps = ({ ui }) => ({
   isOpen: ui.isDrawerOpen,
 });
 
-export default connect(mapDispatchToProps)(PublicLayout);
+export default withRouter(connect(mapDispatchToProps)(PublicLayout));

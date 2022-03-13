@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
 
-function DCSUserRegistrationLogs() {
+function DCSUserEnquireLogs() {
     const fileType =
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
     const fileExtension = ".xlsx";
@@ -14,7 +14,7 @@ function DCSUserRegistrationLogs() {
     }, []);
 
     const fetchData = () => {
-        axios.get('https://www.dcsinstitute.in/api/v1/details/getRegistrations')
+        axios.get('https://www.dcsinstitute.in/api/v1/details/getEnquiries')
             .then((res) => {
                 setDataDCSData(res.data.result);
             })
@@ -28,9 +28,8 @@ function DCSUserRegistrationLogs() {
         const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
         const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
         const data = new Blob([excelBuffer], { type: fileType });
-        FileSaver.saveAs(data, 'User Registration Details' + fileExtension);
+        FileSaver.saveAs(data, 'User Enquiries Details' + fileExtension);
     }
-    
     return (
         <div className='p-5'>
             <div className='flex flex-row justify-end items-end'>
@@ -50,22 +49,10 @@ function DCSUserRegistrationLogs() {
                                             MOBILE NO
                                         </th>
                                         <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            ADDRESS
+                                            STATE
                                         </th>
                                         <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            DATE OF BIRTH
-                                        </th>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            QUALIFICATION
-                                        </th>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            ADDITIONAL QUALIFICATION
-                                        </th>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            REFRENCE
-                                        </th>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            ZIPCODE
+                                            COURSE
                                         </th>
                                     </tr>
                                 </thead>
@@ -78,17 +65,12 @@ function DCSUserRegistrationLogs() {
                                                         <div class="flex flex-col items-start">
                                                             <div>{el.name_of_student}</div>
                                                             <div>{el.email}</div>
-                                                            <div>Age :{el.age}</div>
                                                             <div>City:{el.city}</div>
                                                         </div>
                                                     </td>
                                                     <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.mobile_no}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.address}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{new Date(el.dob ? el.dob : "N/A").toLocaleDateString()}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.qualification}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.additional_qualification}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.refrence}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.zipcode}</td>
+                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.state}</td>
+                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.course}</td>
                                                 </tr>
                                             )
                                         })
@@ -103,4 +85,4 @@ function DCSUserRegistrationLogs() {
     )
 }
 
-export default DCSUserRegistrationLogs
+export default DCSUserEnquireLogs

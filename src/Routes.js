@@ -9,8 +9,8 @@ import Home from "./pages/Home";
 import DemoGraphics from "./pages/DemoGraphics";
 import ComposeEmails from "./pages/ComposeEmails";
 import CBUserLogs from "./pages/CreditBuddyUserLogs";
-import DCSUserRegistrationLogs from "./pages/DCSUserRegistrationLogs/DCSUserRegistrationLogs";
-
+import { DCSUserRegistrationLogs } from "./pages/DCSUserRegistrationLogs";
+import { DCSUserEnquireLogs } from "./pages/DCSUserRegistrationLogs";
 import {
   BrowserView,
   MobileView,
@@ -64,6 +64,12 @@ const Routes = () => {
           path="/dcs-user-registration-logs"
           layout={PublicLayout}
           component={DCSUserRegistrationLogs}
+        />
+        <WithLayoutRoute
+          exact
+          path="/dcs-user-enquire-logs"
+          layout={PublicLayout}
+          component={DCSUserEnquireLogs}
         />
         <Route path="*" component={() => "404 NOT FOUND"} />
       </Switch>

@@ -1,1 +1,2 @@
-export {default} from "./DCSUserRegistrationLogs"
+export {default as DCSUserEnquireLogs} from "./DCSUserEnquireLogs";
+export {default as DCSUserRegistrationLogs} from "./DCSUserRegistrationLogs";
