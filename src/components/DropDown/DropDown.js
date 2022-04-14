@@ -10,16 +10,16 @@ const DropDown = ({ label, options, setDropDownOption, def }) => {
   };
 
   return (
-    <div class="group relative">
-      <button class=" w-full outline-none focus:outline-none border px-3 py-1 bg-white rounded-sm flex items-center min-w-32">
-        <span class="pr-1 flex-1">
+    <div className="group relative">
+      <button className=" w-full outline-none focus:outline-none border px-3 py-1 bg-white rounded-sm flex items-center min-w-32">
+        <span className="pr-1 flex-1">
           <Text variant="primary" size="sm" weight="700" classes="capitalize">
             {def !== option ? option : def}
           </Text>
         </span>
         <span>
           <svg
-            class="fill-current h-4 w-4 transform group-hover:-rotate-180
+            className="fill-current h-4 w-4 transform group-hover:-rotate-180
               transition duration-150 ease-in-out"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
@@ -29,14 +29,14 @@ const DropDown = ({ label, options, setDropDownOption, def }) => {
         </span>
       </button>
       <ul
-        class=" w-full absolute bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
+        className=" w-full absolute bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
                   transition duration-150 ease-in-out origin-top min-w-32 z-20"
       >
         {options.map((el, index) => (
           <li
             onClick={() => handleOptionSelection(el)}
             key={index}
-            class="rounded-sm px-3 py-1 hover:bg-gray-100 cursor-pointer"
+            className="rounded-sm px-3 py-1 hover:bg-gray-100 cursor-pointer"
           >
             <Text variant="primary" size="sm" classes="capitalize">
               {el}

@@ -36,59 +36,59 @@ function DCSUserRegistrationLogs() {
             <div className='flex flex-row justify-end items-end'>
                 <button onClick={() => downloadFile()} className='rounded-md mb-3 px-2 py-2 bg-indigo-600 text-white text-sm font-bold'>Download File</button>
             </div>
-            <div class="flex flex-col">
-                <div class="overflow-x-auto shadow-md">
-                    <div class="inline-block min-w-full align-middle">
-                        <div class="overflow-hidden ">
-                            <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
-                                <thead class="bg-gray-100 dark:bg-gray-700">
+            <div className="flex flex-col">
+                <div className="overflow-x-auto shadow-md">
+                    <div className="inline-block min-w-full align-middle">
+                        <div className="overflow-hidden ">
+                            <table className="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+                                <thead className="bg-gray-100 dark:bg-gray-700">
                                     <tr>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             NAME OF STUDENT
                                         </th>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             MOBILE NO
                                         </th>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             ADDRESS
                                         </th>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             DATE OF BIRTH
                                         </th>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             QUALIFICATION
                                         </th>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             ADDITIONAL QUALIFICATION
                                         </th>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             REFRENCE
                                         </th>
-                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             ZIPCODE
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                     {
                                         dataDCSData.map((el, index) => {
                                             return (
-                                                <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        <div class="flex flex-col items-start">
+                                                <tr className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        <div className="flex flex-col items-start">
                                                             <div>{el.name_of_student}</div>
                                                             <div>{el.email}</div>
                                                             <div>Age :{el.age}</div>
                                                             <div>City:{el.city}</div>
                                                         </div>
                                                     </td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.mobile_no}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.address}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{new Date(el.dob ? el.dob : "N/A").toLocaleDateString()}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.qualification}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.additional_qualification}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.refrence}</td>
-                                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.zipcode}</td>
+                                                    <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.mobile_no}</td>
+                                                    <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.address}</td>
+                                                    <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{new Date(el.dob ? el.dob : "N/A").toLocaleDateString()}</td>
+                                                    <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.qualification}</td>
+                                                    <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.additional_qualification}</td>
+                                                    <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.refrence}</td>
+                                                    <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{el.zipcode}</td>
                                                 </tr>
                                             )
                                         })

@@ -128,7 +128,6 @@ const DynamicListEmail = (props) => {
                             weight="800"
                             variant="black"
                           >
-                            {console.log("sub_el", sub_el)}
                             {sub_el.item}
                           </Text>
                         </ListItemText>

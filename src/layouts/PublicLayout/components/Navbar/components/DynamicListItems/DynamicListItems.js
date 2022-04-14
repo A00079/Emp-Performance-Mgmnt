@@ -11,6 +11,7 @@ import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import LabelIcon from '@material-ui/icons/Label';
 import { withRouter } from "react-router-dom";
+import DOMPurify from 'dompurify'
 
 const useStyles = makeStyles((theme) => ({
     nested: {
@@ -34,7 +35,7 @@ const DynamicListItems = (props) => {
 
     const setDefaultActiveItem = () => {
         let element = document.querySelector(`${'#dashboard'}`);
-        if(!!element){
+        if (!!element) {
             element.classList.add('border-blue-700', 'border-l-4', 'bg-blue-50');
         }
     }
@@ -53,6 +54,9 @@ const DynamicListItems = (props) => {
     const handleListItem = (item, itemroute) => {
         if (!!itemroute) {
             props.history.push(itemroute);
+            console.log('props', props);
+            item.isexpanded = false;
+            props.drawerVisibleFunc();
         } else {
             renderListItems.map((el_list, index) => {
                 if (el_list.id === item.id && item.isexpanded) {
@@ -70,9 +74,8 @@ const DynamicListItems = (props) => {
             {
                 renderListItems.map((el, index) => {
                     return (
-                        <React.Fragment>
+                        <React.Fragment key={index}>
                             <div
-                                key={index}
                                 id={el.id}
                                 onClick={() => activePanel(el.id)}
                                 className='border-white border-l-4 bg-white hover:border-blue-700 border-l-4 hover:bg-blue-50'
@@ -80,7 +83,9 @@ const DynamicListItems = (props) => {
                                 <ListItem button onClick={() => handleListItem(el, el.route)}>
                                     <ListItemIcon className={classes.itemicon}>
                                         <div className="bg-indigo-100 p-2 rounded -mx-3 sm:-mx-2">
-                                            <div dangerouslySetInnerHTML={{ __html: el.itemicon }}></div>
+                                            <div key={Math.floor((1 + Math.random()) * 0x10000)
+                                                .toString(16)
+                                                .substring(1)} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(el.itemicon) }}></div>
                                         </div>
                                     </ListItemIcon>
                                     <ListItemText>
@@ -101,7 +106,7 @@ const DynamicListItems = (props) => {
                             </div>
                             {
                                 el.hasdropdown ?
-                                    <Collapse in={el.isexpanded} timeout="auto" unmountOnExit>
+                                    <Collapse key={index} in={el.isexpanded} timeout="auto" unmountOnExit>
                                         <List component="div" disablePadding>
                                             {
                                                 el.subitemlist.map((sub_el, sub_index) => {
@@ -121,7 +126,6 @@ const DynamicListItems = (props) => {
                                                                     weight="800"
                                                                     variant="black"
                                                                 >
-                                                                    {console.log('sub_el', sub_el)}
                                                                     {sub_el.item}
                                                                 </Text>
                                                             </ListItemText>

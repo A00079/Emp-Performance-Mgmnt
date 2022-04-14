@@ -64,7 +64,7 @@ const GraphTopPannel = () => {
         <React.Fragment>
 
             <div className='px-2 py-4 flex flex-wrap justify-between'>
-                <div class="p-2 lg:w-1/4 md:w-1/2 w-full">
+                <div className="p-2 lg:w-1/4 md:w-1/2 w-full">
                     <div style={{ fontFamily: 'Nunito' }} className="font-semibold text-gray-400 text-sm">
                         Last Updated
                     </div>
@@ -74,44 +74,44 @@ const GraphTopPannel = () => {
                             All system are running smoothly & your activity are displayed below.
                         </p>
                     </small>
-                    {/* <div class="w-full flex flex-row">
-                        <div class="text-xs leading-none py-1 text-center text-white" style={{ background: '#4CDA64', width: '10%' }}></div>
-                        <div class="text-xs leading-none py-1 text-center text-white" style={{ background: '#007AFF', width: '10%' }}></div>
-                        <div class="text-xs leading-none py-1 text-center text-white" style={{ background: '#FF00C6', width: '10%' }}></div>
-                        <div class="text-xs leading-none py-1 text-center text-white" style={{ background: '#FFCC00', width: '7%' }}></div>
-                        <div class="text-xs leading-none py-1 text-center text-white" style={{ background: '#D141F0', width: '7%' }}></div>
+                    {/* <div className="w-full flex flex-row">
+                        <div className="text-xs leading-none py-1 text-center text-white" style={{ background: '#4CDA64', width: '10%' }}></div>
+                        <div className="text-xs leading-none py-1 text-center text-white" style={{ background: '#007AFF', width: '10%' }}></div>
+                        <div className="text-xs leading-none py-1 text-center text-white" style={{ background: '#FF00C6', width: '10%' }}></div>
+                        <div className="text-xs leading-none py-1 text-center text-white" style={{ background: '#FFCC00', width: '7%' }}></div>
+                        <div className="text-xs leading-none py-1 text-center text-white" style={{ background: '#D141F0', width: '7%' }}></div>
                     </div> */}
                 </div>
-                <div class="p-2 lg:w-1/4 md:w-1/2 w-full">
-                    <div class="bg-gray-700 h-full flex items-center border-gray-700 border p-2 rounded-lg">
-                        <div class="w-14 h-14 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4">
+                <div className="p-2 lg:w-1/4 md:w-1/2 w-full">
+                    <div className="bg-gray-700 h-full flex items-center border-gray-700 border p-2 rounded-lg">
+                        <div className="w-14 h-14 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4">
                             <CricularProgressBar percent={20} />
                         </div>
-                        <div class="flex-grow">
-                            <h2 class="text-white title-font font-medium">Holden Caulfield</h2>
-                            <p class="text-white">UI Designer</p>
+                        <div className="flex-grow">
+                            <h2 className="text-white title-font font-medium">Holden Caulfield</h2>
+                            <p className="text-white">UI Designer</p>
                         </div>
                     </div>
                 </div>
-                <div class="p-2 lg:w-1/4 md:w-1/2 w-full">
-                    <div class="bg-gray-700 h-full flex items-center border-gray-700 border p-2 rounded-lg">
-                        <div class="w-14 h-14 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4">
+                <div className="p-2 lg:w-1/4 md:w-1/2 w-full">
+                    <div className="bg-gray-700 h-full flex items-center border-gray-700 border p-2 rounded-lg">
+                        <div className="w-14 h-14 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4">
                             <CricularProgressBar percent={60} />
                         </div>
-                        <div class="flex-grow">
-                            <h2 class="text-white title-font font-medium">Holden Caulfield</h2>
-                            <p class="text-white">UI Designer</p>
+                        <div className="flex-grow">
+                            <h2 className="text-white title-font font-medium">Holden Caulfield</h2>
+                            <p className="text-white">UI Designer</p>
                         </div>
                     </div>
                 </div>
-                <div class="p-2 lg:w-1/4 md:w-1/2 w-full">
-                    <div class="bg-gray-700 h-full flex items-center border-gray-700 border p-2 rounded-lg">
-                        <div class="w-14 h-14 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4">
+                <div className="p-2 lg:w-1/4 md:w-1/2 w-full">
+                    <div className="bg-gray-700 h-full flex items-center border-gray-700 border p-2 rounded-lg">
+                        <div className="w-14 h-14 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4">
                             <CricularProgressBar percent={90} />
                         </div>
-                        <div class="flex-grow">
-                            <h2 class="text-white title-font font-medium">Holden Caulfield</h2>
-                            <p class="text-white">UI Designer</p>
+                        <div className="flex-grow">
+                            <h2 className="text-white title-font font-medium">Holden Caulfield</h2>
+                            <p className="text-white">UI Designer</p>
                         </div>
                     </div>
                 </div>

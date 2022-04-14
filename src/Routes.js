@@ -8,9 +8,8 @@ import { PublicLayout, SecondaryPublicLayout } from "./layouts";
 import Home from "./pages/Home";
 import DemoGraphics from "./pages/DemoGraphics";
 import ComposeEmails from "./pages/ComposeEmails";
-import CBUserLogs from "./pages/CreditBuddyUserLogs";
-import { DCSUserRegistrationLogs } from "./pages/DCSUserRegistrationLogs";
-import { DCSUserEnquireLogs } from "./pages/DCSUserRegistrationLogs";
+import { CBUserLogs, CBAddCampaign } from "./pages/CreditBuddy";
+import { DCSUserRegistrationLogs, DCSUserEnquireLogs } from "./pages/DCSUserRegistrationLogs";
 import {
   BrowserView,
   MobileView,
@@ -58,6 +57,12 @@ const Routes = () => {
           path="/creditbuddy-user-logs"
           layout={PublicLayout}
           component={CBUserLogs}
+        />
+        <WithLayoutRoute
+          exact
+          path="/creditbuddy-add-offers"
+          layout={PublicLayout}
+          component={CBAddCampaign}
         />
         <WithLayoutRoute
           exact
