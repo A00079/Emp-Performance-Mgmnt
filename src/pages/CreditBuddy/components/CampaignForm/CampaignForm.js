@@ -71,7 +71,7 @@ function CampaignForm() {
             id: 'minimumbalance',
             name: 'minimumbalance',
             type: 'number',
-            label: 'Minimum Balance Rs',
+            label: 'Minimum Balance',
         },
         {
             id: 'interestrate',
