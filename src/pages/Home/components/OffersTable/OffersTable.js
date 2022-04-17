@@ -1,6 +1,4 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import { CustomAvatar } from '../../../DemoGraphics/components';
 
 const OffersTable = () => {
     return (
@@ -53,7 +51,6 @@ const OffersTable = () => {
                                         <td className="px-6 py-2 whitespace-nowrap border-l-8 border-gray-300">
                                             <div className="flex items-center">
                                                 <div className="flex-shrink-0 h-10 w-10">
-                                                    <CustomAvatar val='MOTILAL' />
                                                 </div>
                                                 <div className="ml-4">
                                                     <div className="text-xs font-extrabold text-blue-500">
@@ -112,7 +109,6 @@ const OffersTable = () => {
                                         <td className="px-6 py-2 whitespace-nowrap border-l-8 border-gray-300">
                                             <div className="flex items-center">
                                                 <div className="flex-shrink-0 h-10 w-10">
-                                                    <CustomAvatar val='MOTILAL' />
                                                 </div>
                                                 <div className="ml-4">
                                                     <div className="text-xs font-extrabold text-blue-500">
@@ -171,7 +167,6 @@ const OffersTable = () => {
                                         <td className="px-6 py-2 whitespace-nowrap border-l-8 border-gray-300">
                                             <div className="flex items-center">
                                                 <div className="flex-shrink-0 h-10 w-10">
-                                                    <CustomAvatar val='MOTILAL' />
                                                 </div>
                                                 <div className="ml-4">
                                                     <div className="text-xs font-extrabold text-blue-500">
@@ -230,7 +225,6 @@ const OffersTable = () => {
                                         <td className="px-6 py-2 whitespace-nowrap border-l-8 border-gray-300">
                                             <div className="flex items-center">
                                                 <div className="flex-shrink-0 h-10 w-10">
-                                                    <CustomAvatar val='MOTILAL' />
                                                 </div>
                                                 <div className="ml-4">
                                                     <div className="text-xs font-extrabold text-blue-500">

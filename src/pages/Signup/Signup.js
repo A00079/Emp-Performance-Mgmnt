@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { ImageField } from "../../components";
 import { COLORS } from "../../theme/mainTheme";
 import { Form, Features } from "./components";
 
@@ -16,7 +15,6 @@ const Signup = () => {
           <Form />
         </div>
         <div className="my-10 justify-center col-span-3 px-2">
-          <ImageField />
         </div>
       </div>
     </div>

@@ -6,16 +6,9 @@ import { PublicLayout, SecondaryPublicLayout } from "./layouts";
 // const LandingPage = lazy(() => import("./pages/LandingPage"));
 
 import Home from "./pages/Home";
-import DemoGraphics from "./pages/DemoGraphics";
 import ComposeEmails from "./pages/ComposeEmails";
 import { CBUserLogs, CBAddCampaign } from "./pages/CreditBuddy";
 import { DCSUserRegistrationLogs, DCSUserEnquireLogs } from "./pages/DCSUserRegistrationLogs";
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile,
-} from "react-device-detect";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 const Routes = () => {
@@ -39,12 +32,6 @@ const Routes = () => {
           path="/Login"
           layout={SecondaryPublicLayout}
           component={Login}
-        />
-        <WithLayoutRoute
-          exact
-          path="/demo-graphics"
-          layout={PublicLayout}
-          component={DemoGraphics}
         />
         <WithLayoutRoute
           exact

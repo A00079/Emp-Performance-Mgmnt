@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { DonutChart } from '../../../../components/GraphComponents/components';
 import { CustomProgressBar } from './components';
 
 const EmployeeStats = () => {
