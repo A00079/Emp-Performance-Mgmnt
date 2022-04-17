@@ -35,7 +35,7 @@ const Login = (props) => {
         <div>
           <img src="./img/Login/login.svg" className="object-contain object-center w-60 mb-5" />
           <h1 class="text-white font-bold text-4xl font-sans">Dashboard Console</h1>
-          <p class="text-white mt-1">The most popular management tool that makes your business grow</p>
+          <p class="text-white mt-1">The most popular management tool that makes your business grow.</p>
           <p class="text-white font-bold text-sm mt-3">An intelligent management platform for Affiliators.<br />Simple and easy to use.</p>
         </div>
       </div>
