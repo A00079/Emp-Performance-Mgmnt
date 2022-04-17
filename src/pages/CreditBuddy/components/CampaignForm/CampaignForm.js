@@ -6,6 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import firebase from '../../../../utils/firebase';
 
+
 function CampaignForm() {
 
     const [creditCardFields, setCreditCardField] = useState([
@@ -114,27 +115,43 @@ function CampaignForm() {
     ]);
     const [homeLoanFields, setHomeLoanField] = useState([]);
 
-    const [visibleCampaignFields, setVisibleCampaignFields] = useState(creditCardFields);
+    const [visibleCampaignFields, setVisibleCampaignFields] = useState([]);
 
     const [campaigninputs, setCampaignInputs] = React.useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [campaignImg, setCampaignImg] = useState('');
+    const [campaignType, setCampaignType] = useState('');
 
+    const resetFormLinks = () => {
+        document.getElementById('actionlink').value = '';
+        document.getElementById('formlink').value = '';
+    }
     const handleInputChange = (event) => {
         setCampaignInputs({
             ...campaigninputs,
             [event.target.name]: event.target.value
         });
         if (event.target.name == 'campaigntype') {
+            setCampaignType(event.target.value);
             if (event.target.value == 'Credit Card') {
+                resetFormLinks();
+                setCampaignInputs({});
                 setVisibleCampaignFields(creditCardFields);
             } else if (event.target.value == 'Personal Loan') {
+                resetFormLinks();
+                setCampaignInputs({});
                 setVisibleCampaignFields(personalLoanFields);
             } else if (event.target.value == 'Saving Account') {
+                resetFormLinks();
+                setCampaignInputs({});
                 setVisibleCampaignFields(savingAccountFields);
             } else if (event.target.value == 'Demat Account') {
+                resetFormLinks();
+                setCampaignInputs({});
                 setVisibleCampaignFields(demateAccountFields);
             } else if (event.target.value == 'Home Loan') {
+                resetFormLinks();
+                setCampaignInputs({});
                 setVisibleCampaignFields(homeLoanFields);
             }
         }
@@ -156,19 +173,37 @@ function CampaignForm() {
     }
 
     const handleSave = () => {
-        setIsLoading(true);
-        campaigninputs['campaignimg'] = campaignImg;
-        firebase.child(campaigninputs.campaigntype).push(
-            campaigninputs,
-            err => {
-                if (err) {
-                    setIsLoading(false);
-                    alert('Something Went Wrong...');
-                } else {
-                    alert('Campaign added successfully');
-                    setIsLoading(false);
-                }
-            })
+        if (Object.keys(campaigninputs).length == 0) {
+            alert('All fields are mandatory.');
+        } else {
+            setIsLoading(true);
+            campaigninputs['campaignimg'] = campaignImg;
+            campaigninputs['campaigntype'] = campaignType;
+            !!campaigninputs['actionlink'] ? campaigninputs['actionlink'] = campaigninputs['actionlink'] : campaigninputs['actionlink'] = "";
+            !!campaigninputs['formlink'] ? campaigninputs['formlink'] = campaigninputs['formlink'] : campaigninputs['formlink'] = "";
+            console.log('Data Save --->', campaigninputs);
+            firebase.child(campaigninputs.campaigntype).push(
+                campaigninputs,
+                err => {
+                    if (err) {
+                        setIsLoading(false);
+                        alert('Something Went Wrong...');
+                    } else {
+                        Object.keys(campaigninputs).map((el, index) => {
+                            if (el == 'campaignimg') {
+                                document.getElementById(el).src = "";
+                                setCampaignImg('');
+                            } else {
+                                document.getElementById(el).value = "";
+                            }
+                        });
+                        resetFormLinks();
+                        setCampaignInputs({});
+                        setIsLoading(false);
+                        alert('Campaign added successfully');
+                    }
+                })
+        }
     };
 
     return (
@@ -180,7 +215,7 @@ function CampaignForm() {
                 <div className="bg-gray-50 border border-gray-200 px-2 py-4 rounded-lg overflow-hidden mb-5">
                     {
                         !!campaignImg ?
-                            <img alt="content" className="object-cover object-center mx-auto w-60" src={campaignImg} />
+                            <img alt="content" id='campaignimg' className="object-cover object-center mx-auto w-60" src={campaignImg} />
                             : <p className='text-xs font-medium text-gray-400'>Uplaod image for preview.</p>
                     }
                 </div>
@@ -225,18 +260,18 @@ function CampaignForm() {
                     </FormControl>
                 </div>
                 {
-                    visibleCampaignFields.map((el, index) => {
+                    visibleCampaignFields.length !== 0 && visibleCampaignFields.map((el, index) => {
                         return (
                             <div key={index} className="col-span-6 w-full place-items-end">
-                                <TextField size='small' type={el.type} onChange={(e) => handleInputChange(e)} name={el.name} className="w-full" id={el.id} label={el.label} variant="outlined" />
+                                <TextField key={el.id} size='small' type={el.type} onChange={(e) => handleInputChange(e)} name={el.name} className="w-full" id={el.id} label={el.label} variant="outlined" />
                             </div>
                         )
                     })
                 }
             </div>
             <div className='flex flex-col items-center space-y-4 px-2 mt-4'>
-                <TextField size='small' disabled={!!campaigninputs.formlink ? true : false} onChange={(e) => handleInputChange(e)} value={campaigninputs.actionlink} name='actionlink' className={`w-full ${!!campaigninputs.formlink ? 'bg-gray-100': '' }`} id="actionlink" label="Action Link" variant="outlined" />
-                <TextField size='small' disabled={!!campaigninputs.actionlink ? true : false} onChange={(e) => handleInputChange(e)} value={campaigninputs.formlink} name='formlink' className={`w-full ${!!campaigninputs.actionlink ? 'bg-gray-100': '' }`} id="formlink" label="Form Link" variant="outlined" />
+                <TextField size='small' disabled={!!campaigninputs.formlink ? true : false} onChange={(e) => handleInputChange(e)} value={campaigninputs.actionlink}  name='actionlink' className={`w-full ${!!campaigninputs.formlink ? 'bg-gray-100' : ''}`} id="actionlink" label="Action Link" variant="outlined" />
+                <TextField size='small' disabled={!!campaigninputs.actionlink ? true : false} onChange={(e) => handleInputChange(e)} value={campaigninputs.formlink} name='formlink' className={`w-full ${!!campaigninputs.actionlink ? 'bg-gray-100' : ''}`} id="formlink" label="Form Link" variant="outlined" />
             </div>
             <div className="w-full flex flex-row justify-end items-end px-2 py-4 space-x-2">
                 <button onClick={() => handleSave()} className='shadow-xl px-5 py-2 text-white bg-indigo-600 rounded-md text-sm font-bold'>

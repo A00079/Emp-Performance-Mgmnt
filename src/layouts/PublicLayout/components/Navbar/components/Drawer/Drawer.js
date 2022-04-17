@@ -220,7 +220,7 @@ const MiniDrawer = (props) => {
           'route': '/creditbuddy-user-logs'
         },
         {
-          'item': 'Add Offers',
+          'item': 'Add Campaings',
           'route': '/creditbuddy-add-offers'
         },
       ],
