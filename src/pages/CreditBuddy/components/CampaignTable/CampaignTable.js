@@ -7,27 +7,27 @@ import Select from '@material-ui/core/Select';
 
 function CampaignTable() {
     const [campaignsData, setCampaignData] = useState([]);
-    const [selectedCampaign, setSelectedCampaign] = useState('Credit Card');
+    const [selectedCampaign, setSelectedCampaign] = useState('creditcard');
 
     useEffect(() => {
         fetchCampaings();
     }, []);
 
     const fetchCampaings = (campaign) => {
-        firebase.child(campaign ? campaign : selectedCampaign).on('value', snapshot => {
-            if (snapshot.val() != null) {
-                let fetchedData = [];
-                Object.keys(snapshot.val()).map((el, index) => {
-                    let obj = {};
-                    obj = snapshot.val()[el];
-                    obj['id'] = el
-                    fetchedData.push(obj);
-                });
-                setCampaignData(fetchedData);
-            } else {
-                setCampaignData([]);
-            }
-        });
+        firebase.firestore().collection(campaign ? campaign : selectedCampaign).get().then((data) => {
+            let fetchedData = [];
+            data.docs.forEach(item => {
+                let obj = {};
+                console.log('item.data()', item.id);
+                console.log('item.data()', item.data());
+                obj = item.data();
+                obj['id'] = item.id;
+                fetchedData.push(obj);
+            });
+            setCampaignData(fetchedData);
+        }).catch((e) => {
+            setCampaignData([]);
+        })
     }
 
     const handleCampaignInput = (e) => {
@@ -37,16 +37,11 @@ function CampaignTable() {
 
     const handleRecordDelete = (recID) => {
         if (window.confirm('Are you sure to delete this record?')) {
-            firebase.child(`${selectedCampaign}/${recID}`).remove(
-                err => {
-                    if (err) {
-                        console.log(err)
-                    }
-                    else {
-                        fetchCampaings();
-                        alert('Record deleted successfully.');
-                    }
-                })
+            firebase.firestore().collection(selectedCampaign).doc(recID).delete().then((resp) => {
+                console.log('Rec Delete ---->', resp);
+                fetchCampaings();
+                alert('Record deleted successfully.');
+            });
         }
     }
     return (
@@ -67,11 +62,11 @@ function CampaignTable() {
                             onChange={(e) => handleCampaignInput(e)}
                             label="Campaign Type"
                         >
-                            <MenuItem value={'Credit Card'}>Credit Card</MenuItem>
-                            <MenuItem value={'Home Loan'}>Home Loan</MenuItem>
-                            <MenuItem value={'Personal Loan'}>Personal Loan</MenuItem>
-                            <MenuItem value={'Demat Account'}>Demat Account</MenuItem>
-                            <MenuItem value={'Saving Account'}>Saving Account</MenuItem>
+                            <MenuItem value={'creditcard'}>Credit Card</MenuItem>
+                            <MenuItem value={'homeloan'}>Home Loan</MenuItem>
+                            <MenuItem value={'personalloan'}>Personal Loan</MenuItem>
+                            <MenuItem value={'demataccount'}>Demat Account</MenuItem>
+                            <MenuItem value={'savingaccount'}>Saving Account</MenuItem>
                         </Select>
                     </FormControl>
                 </div>

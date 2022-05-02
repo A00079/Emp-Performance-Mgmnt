@@ -133,23 +133,23 @@ function CampaignForm() {
         });
         if (event.target.name == 'campaigntype') {
             setCampaignType(event.target.value);
-            if (event.target.value == 'Credit Card') {
+            if (event.target.value == 'creditcard') {
                 resetFormLinks();
                 setCampaignInputs({});
                 setVisibleCampaignFields(creditCardFields);
-            } else if (event.target.value == 'Personal Loan') {
+            } else if (event.target.value == 'personalloan') {
                 resetFormLinks();
                 setCampaignInputs({});
                 setVisibleCampaignFields(personalLoanFields);
-            } else if (event.target.value == 'Saving Account') {
+            } else if (event.target.value == 'savingaccount') {
                 resetFormLinks();
                 setCampaignInputs({});
                 setVisibleCampaignFields(savingAccountFields);
-            } else if (event.target.value == 'Demat Account') {
+            } else if (event.target.value == 'demataccount') {
                 resetFormLinks();
                 setCampaignInputs({});
                 setVisibleCampaignFields(demateAccountFields);
-            } else if (event.target.value == 'Home Loan') {
+            } else if (event.target.value == 'homeloan') {
                 resetFormLinks();
                 setCampaignInputs({});
                 setVisibleCampaignFields(homeLoanFields);
@@ -182,27 +182,20 @@ function CampaignForm() {
             !!campaigninputs['actionlink'] ? campaigninputs['actionlink'] = campaigninputs['actionlink'] : campaigninputs['actionlink'] = "";
             !!campaigninputs['formlink'] ? campaigninputs['formlink'] = campaigninputs['formlink'] : campaigninputs['formlink'] = "";
             console.log('Data Save --->', campaigninputs);
-            firebase.child(campaigninputs.campaigntype).push(
-                campaigninputs,
-                err => {
-                    if (err) {
-                        setIsLoading(false);
-                        alert('Something Went Wrong...');
-                    } else {
-                        Object.keys(campaigninputs).map((el, index) => {
-                            if (el == 'campaignimg') {
-                                document.getElementById(el).src = "";
-                                setCampaignImg('');
-                            } else {
-                                document.getElementById(el).value = "";
-                            }
-                        });
-                        resetFormLinks();
-                        setCampaignInputs({});
-                        setIsLoading(false);
-                        alert('Campaign added successfully');
-                    }
+            firebase.firestore().collection(campaigninputs.campaigntype)
+                .add(campaigninputs)
+                .then(function (docRef) {
+                    // console.log("Tutorial created with ID: ", docRef.id);
+                    resetFormLinks();
+                    setCampaignInputs({});
+                    setIsLoading(false);
+                    alert('Campaign added successfully');
                 })
+                .catch(function (error) {
+                    setIsLoading(false);
+                    alert('Something Went Wrong...');
+                    console.error("Error adding Tutorial: ", error);
+                });;
         }
     };
 
@@ -251,11 +244,11 @@ function CampaignForm() {
                             onChange={(e) => handleInputChange(e)}
                             label="Campaign Type"
                         >
-                            <MenuItem value={'Credit Card'}>Credit Card</MenuItem>
-                            <MenuItem value={'Home Loan'}>Home Loan</MenuItem>
-                            <MenuItem value={'Personal Loan'}>Personal Loan</MenuItem>
-                            <MenuItem value={'Demat Account'}>Demat Account</MenuItem>
-                            <MenuItem value={'Saving Account'}>Saving Account</MenuItem>
+                            <MenuItem value={'creditcard'}>Credit Card</MenuItem>
+                            <MenuItem value={'homeloan'}>Home Loan</MenuItem>
+                            <MenuItem value={'personalloan'}>Personal Loan</MenuItem>
+                            <MenuItem value={'demataccount'}>Demat Account</MenuItem>
+                            <MenuItem value={'savingaccount'}>Saving Account</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
@@ -270,7 +263,7 @@ function CampaignForm() {
                 }
             </div>
             <div className='flex flex-col items-center space-y-4 px-2 mt-4'>
-                <TextField size='small' disabled={!!campaigninputs.formlink ? true : false} onChange={(e) => handleInputChange(e)} value={campaigninputs.actionlink}  name='actionlink' className={`w-full ${!!campaigninputs.formlink ? 'bg-gray-100' : ''}`} id="actionlink" label="Action Link" variant="outlined" />
+                <TextField size='small' disabled={!!campaigninputs.formlink ? true : false} onChange={(e) => handleInputChange(e)} value={campaigninputs.actionlink} name='actionlink' className={`w-full ${!!campaigninputs.formlink ? 'bg-gray-100' : ''}`} id="actionlink" label="Action Link" variant="outlined" />
                 <TextField size='small' disabled={!!campaigninputs.actionlink ? true : false} onChange={(e) => handleInputChange(e)} value={campaigninputs.formlink} name='formlink' className={`w-full ${!!campaigninputs.actionlink ? 'bg-gray-100' : ''}`} id="formlink" label="Form Link" variant="outlined" />
             </div>
             <div className="w-full flex flex-row justify-end items-end px-2 py-4 space-x-2">
