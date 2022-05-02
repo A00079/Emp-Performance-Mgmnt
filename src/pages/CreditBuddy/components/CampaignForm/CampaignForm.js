@@ -195,7 +195,7 @@ function CampaignForm() {
                     setIsLoading(false);
                     alert('Something Went Wrong...');
                     console.error("Error adding Tutorial: ", error);
-                });;
+                });
         }
     };
 

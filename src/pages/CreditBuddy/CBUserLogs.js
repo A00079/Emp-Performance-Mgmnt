@@ -20,17 +20,32 @@ function CBUserLogs() {
     }, []);
 
     const fetchData = (campaign) => {
-        firebase.child(campaign ? campaign : selectedCampaign).on('value', snapshot => {
-            if (snapshot.val() != null) {
-                let fetchedData = [];
-                Object.keys(snapshot.val()).map((el, index) => {
-                    fetchedData.push(snapshot.val()[el]);
-                });
-                setCampaignData(fetchedData);
-            } else {
-                setCampaignData([]);
-            }
-        });
+        // firebase.child(campaign ? campaign : selectedCampaign).on('value', snapshot => {
+        //     if (snapshot.val() != null) {
+        //         let fetchedData = [];
+        //         Object.keys(snapshot.val()).map((el, index) => {
+        //             fetchedData.push(snapshot.val()[el]);
+        //         });
+        //         setCampaignData(fetchedData);
+        //     } else {
+        //         setCampaignData([]);
+        //     }
+        // });
+
+        firebase.firestore().collection(campaign ? campaign : selectedCampaign).get().then((data) => {
+            let fetchedData = [];
+            data.docs.forEach(item => {
+                let obj = {};
+                console.log('item.data()', item.id);
+                console.log('item.data()', item.data());
+                obj = item.data();
+                obj['id'] = item.id;
+                fetchedData.push(obj);
+            });
+            setCampaignData(fetchedData);
+        }).catch((e) => {
+            setCampaignData([]);
+        })
     }
 
     const handleCampaignInput = (e) => {
