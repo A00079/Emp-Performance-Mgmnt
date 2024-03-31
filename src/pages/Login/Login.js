@@ -10,7 +10,7 @@ const Login = (props) => {
   };
 
   const handleLogin = () => {
-    if (input.email == 'team.candidleads@gmail.com' && input.password == 'dcsiNDIA@02') {
+    if (input.email == 'candidleads@gmail.com' && input.password == 'candid@123') {
       window.sessionStorage.setItem('useremail', input.email);
       props.history.push('/');
     } else {
